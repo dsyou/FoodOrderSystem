@@ -16,7 +16,7 @@ public class LunchView {
 
     public LunchView() {
         super();
-    }
+    } //
 
     private static OrderMenu o = OrderMenu.getInstace();
 
