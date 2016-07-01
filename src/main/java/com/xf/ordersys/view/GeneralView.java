@@ -1,5 +1,7 @@
 package com.xf.ordersys.view;
 
+import com.xf.ordersys.core.Engine;
+
 /**
  * Created by Dawid Janik on 2016-06-29.
  * @author Dawid Janik
@@ -10,7 +12,6 @@ package com.xf.ordersys.view;
 public class GeneralView {
 
 
-
     public static void view(){
 
         CommonPurposeView.view_SystemInfo();
@@ -19,6 +20,8 @@ public class GeneralView {
         System.out.println(" 2. Payment");
         System.out.println();
         System.out.println(" 3. Exit");
+
+        Engine.makeAction_globalView();
 
     }
 

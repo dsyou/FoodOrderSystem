@@ -2,8 +2,7 @@ package com.xf.ordersys.appRun;
 
 
 import com.xf.ordersys.core.DataContent;
-import com.xf.ordersys.core.Engine;
-import com.xf.ordersys.view.MainView;
+import com.xf.ordersys.view.GeneralView;
 
 import java.io.IOException;
 
@@ -19,9 +18,9 @@ public class Main {
 
         DataContent.getContent("C://Food.xlsx"); // Place of ... path
 
-        MainView.view();
-        Engine.getUserAction();
-        Engine.action();
+        GeneralView.view();
+        //Engine.getUserAction();
+
 
     }
 /*

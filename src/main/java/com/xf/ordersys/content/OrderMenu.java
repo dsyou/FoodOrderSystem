@@ -19,7 +19,7 @@ public class OrderMenu {
 
     public int userKey = 0;
 
-    private Double totalAmount = 0.d;
+
 
 //=================================================================================================================
 //
@@ -50,7 +50,7 @@ public class OrderMenu {
 
 
 //=================================================================================================================
-//Methods Singleton
+//Method Singleton
 
     public static OrderMenu getInstace(){
 

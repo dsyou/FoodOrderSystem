@@ -1,5 +1,7 @@
 package com.xf.ordersys.view;
 
+import com.xf.ordersys.core.Order;
+
 /**
  * Created by Dawid Janik on 2016-06-28.
  *
@@ -7,10 +9,13 @@ package com.xf.ordersys.view;
  */
 public class CommonPurposeView {
 
+   private static Order order = Order.getInstace();
 
+//=================================================================================================================
+//
     public static  void view_SystemInfo(){
         System.out.println(" ============================== ");
-        System.out.println(" = Food Ordering System v.0.2 = ");
+        System.out.println(" = Food Ordering System v.0.4 = ");
         System.out.println(" ============================== ");
     }
 
@@ -20,7 +25,7 @@ public class CommonPurposeView {
     }
 
     public static void totalAmount(){
-        System.out.println("Total Amount:"); //TODO rozbic na metody
+        System.out.println("    Total Amount: " + order.getTotalAmount()  + "$");
     }
 
     public static void backToTop(){

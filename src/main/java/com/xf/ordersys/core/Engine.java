@@ -17,181 +17,14 @@ public class Engine {
 
 
     private static OrderMenu o = OrderMenu.getInstace();
-
-        public static void test(){
-
-        }
+    private static Order order = Order.getInstace();
 
 
-    public static void makeAction(){
-
-        Engine.getUserAction(); // Wait for key
-
-        if (o.userKey == 999) { //999
-            MainView.view();
-        }else{
-            LunchView.view_CuisinesContent();
-        }
+    public Engine(){
+        super();
     }
-
-    public static void makeAction_mainView(){
-
-        Engine.getUserAction(); // Wait for key
-
-        if (o.userKey == 999) { //999
-           System.exit(0);
-        }else{
-            action();
-        }
-    }
-
-
-    public static void makeAction_launchView(){
-
-        Engine.getUserAction(); // Wait for key
-
-        if (o.userKey == 999) { //999
-            System.exit(0);
-        }else{
-            action();
-        }
-    }
-
-    public static void makeAction_drinkView(){
-
-        Engine.getUserAction(); // Wait for key
-
-        if (o.userKey == 999) { //999
-            System.exit(0);
-        }else{
-            action();
-        }
-    }
-
-
-/*
-    Take action from user response
- */
-    public static void action(){
-
-        switch (o.userKey){
-
-            case 1: //Lunch
-                LunchView.view();
-               // Engine.actionLunch(Engine.getUserAction());
-                break;
-            case 2: //Drink's
-                DrinkView.view();
-             //   Engine.actionDrinks(Engine.getUserAction());
-                break;
-            case 4: //Forgot Order
-                ForgotOrder.view();
-              //  Engine.actionLunch(Engine.getUserAction());
-                break;
-            case 5: // Exit/Logout
-                SystemView.view();
-             //   Engine.actionLunch(Engine.getUserAction());
-                break;
-
-            default:
-                System.err.println("Something very bad here...");
-        }
-      //  Engine.action(Engine.getUserAction());
-    }
-
-
-    /*
-        Take action from user response
-     */
-    public static void actionLunch(int i){
-
-        switch (i){
-
-//            case 1: //Lunch Polish
-//                LunchView.polish();
+//===================================================================
 //
-//                break;
-//
-//            case 2: //Lunch Mexican
-//                LunchView.mexico();
-//
-//                break;
-//            case 3: //Lunch Italian
-//                LunchView.italian();
-
-             //   break;
-            case 9: // Exit/Logout
-                SystemView.view();
-
-                break;
-
-            default:
-                System.err.println("Something very bad in actionLunch...");
-        }
-        Engine.getUserAction();
-    }
-
-
-    /*
-    Take action from user response
- */
-    public static void actionDrinks(int i){
-
-        switch (i){
-
-//            case 1: // drink_1
-//                LunchView.polish();
-//                Engine.getUserAction();
-//                break;
-//
-//            case 2: //drink_2
-//                LunchView.mexico();
-//
-//                break;
-//            case 3: //drink_2
-//                LunchView.italian();
-
-              //  break;
-            case 9: // Exit/Logout
-                SystemView.view();
-
-                break;
-
-            default:
-                System.err.println("Something very bad in actionDrink...");
-        }
-
-    }
-
-
-    private static void forgotOrder_View() {
-    }
-
-    private static void exitLogoutView() {
-
-    }
-
-    private static void forgotOrder() {
-    }
-
-    private static void drinkView() {
-    }
-
-    private static void lunchView() {
-
-        System.out.println("Food System Order v. 0.1");
-        System.out.println("");
-        System.out.println("1. Polish");
-        System.out.println("2. Mexican");
-        System.out.println("2. Italian");
-    }
-
-
-    public String totalAmount(){
-
-    return "";
-}
-
     public static void getUserAction()  {
 
         InputStreamReader isr = new InputStreamReader(System.in);
@@ -200,13 +33,175 @@ public class Engine {
         System.out.print("Your Choice...");
 
         try {
-              o.userKey  = Integer.parseInt(br.readLine());
+            o.userKey  = Integer.parseInt(br.readLine());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("======================================");
+        System.out.println("********************************");
+
+    }
+    public static void getUserAction_Quantity()  {
+
+        InputStreamReader isr = new InputStreamReader(System.in);
+        BufferedReader br=new BufferedReader(isr);
+
+        System.out.print("Enter amount...");
+
+        try {
+            order.quantity = Integer.parseInt(br.readLine());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("********************************");
+
+    }
+//===================================================================
+//Response Methods
+
+//public static void makeAction_globalView(){
+//
+//    Engine.getUserAction(); // Wait for key
+//
+//    if (o.userKey == 999) { //999
+//        MainView.view();
+//    }else{
+//        LunchView.view_CuisinesContent();
+//    }
+//}
+
+    public static void makeAction_globalView(){
+
+        Engine.getUserAction(); // Wait for key
+
+        if (o.userKey == 999 || o.userKey == 3) { //999
+            System.exit(0); // Close app with 0 exit code
+        }else if (o.userKey == 1){
+            MainView.view();
+        }else if (o.userKey == 2){
+            PaymentView.view();
+        }
+    }
+
+    public static void makeAction_mainView(){
+
+        Engine.getUserAction(); // Wait for key
+
+        if (o.userKey == 999 ) { //999
+           System.exit(0);
+        }else {
+            switch (o.userKey) {
+
+                case 1: //Lunch
+                    LunchView.view();
+                    // Engine.actionLunch(Engine.getUserAction());
+                    break;
+                case 2: //Drink's
+                    DrinkView.view();
+                    //   Engine.actionDrinks(Engine.getUserAction());
+                    break;
+                case 4: //Forgot Order
+                    MangeOrderVIew.view();
+                    //  Engine.actionLunch(Engine.getUserAction());
+                    break;
+                case 5: // Exit/Logout
+                     GeneralView.view();
+                      //   Engine.actionLunch(Engine.getUserAction());
+                     break;
+
+                default:
+                    System.err.println("Something very bad here...LunchView");
+            }
+        }
+    }
+//===================================================================
+// Manage
+    public static void makeAction_manageView() {
+        Engine.getUserAction(); // Wait for key
+
+        if (o.userKey == 1) { //Show order option
+
+        } else if (o.userKey == 5) { // Forgot all in order
+            order.dropOrder();
+            MainView.view();
+        } else if (o.userKey == 0) { // Cancel back option
+            MainView.view();
+        }
+    }
+//===================================================================
+// Launch
+
+    public static void makeAction_launchView(){
+
+        Engine.getUserAction(); // Wait for key
+
+        if ( o.userKey == 0) { //999
+            MainView.view();
+        }else{
+           //o.getArrayOfCuisine().get(o.userKey -1);//
+            LunchView.view_CuisinesContent();
+        }
+    }
+
+
+//===================================================================
+//Drinks
+
+    public static void makeAction_drinkView(){
+
+        Engine.getUserAction(); // Wait for key
+
+        if (o.userKey == 999) { //999
+            System.exit(0);
+        }else{
+          //  action();
+        }
+    }
+
+//===================================================================
+//Make Order
+
+    public static void makeOrder_View(){
+            Engine.getUserAction();
+            if (o.userKey == 0) { //Cancel
+                MainView.view(); //Or maybe LunchView.view();
+            }
+            OrderView.view();
+    }
+
+    public static void makeAction_Order() {
+
+        Engine.getUserAction(); // Wait for key
+
+        if (o.userKey == 0) { //Cancel
+            MainView.view(); //Or maybe LunchView.view();
+        }else if (o.userKey == 1){ //Quantity + add this item into order list
+            OrderView.quantity_View();
+
+        }else if (o.userKey == 2) { // Accept, and back into  LunchView
+            LunchView.view();
+        }
+
+    }
+
+    public static void makeQuantity_Add(){
+
+        Engine.getUserAction_Quantity(); // Wait for quantity
+        // for ilosc tyle dodaj
+        if (order.quantity == 0){
+            //back...
+        }else{
+            for (int i=0 ; i <order.quantity; i++){
+                order.getPriceOfOrderedItems().add( o.getArrayOfCuisine().get(o.userKey - 1).getPrice() );    //ilosc
+                order.getNamesOfOrderedItems().add( o.getArrayOfCuisine().get(o.userKey - 1).getNameMainCourse() + " " + o.getArrayOfCuisine().get(o.userKey - 1).getNameDessert() );  //zamowienie
+            }
+            order.totalAmount();
+            System.out.println(order.toString());
+            LunchView.view();
+        }
+
 
     }
 
 
-}
+
+} // End of Engine

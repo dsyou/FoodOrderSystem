@@ -26,6 +26,9 @@ public  class Cuisines {
         this.price = price;
     }
 
+//===================================================================
+//
+
     public String getName() {
         return nameCuisines;
     }
@@ -58,7 +61,8 @@ public  class Cuisines {
         this.nameDessert = nameDessert;
     }
 
-
+//===================================================================
+//
     @Override
     public String toString() {
         return "Cuisines{" +
@@ -68,4 +72,7 @@ public  class Cuisines {
                 ", price=" + price +
                 '}';
     }
+
+
+
 }// End of Cuisines

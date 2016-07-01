@@ -3,9 +3,6 @@ package com.xf.ordersys.view;
 import com.xf.ordersys.content.OrderMenu;
 import com.xf.ordersys.core.Engine;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 /**
  * Created by Dawid Janik on 2016-06-28.
  *
@@ -35,50 +32,20 @@ public class LunchView {
         CommonPurposeView.totalAmount();
         CommonPurposeView.backToTop();
 
-        Engine.makeAction();
+        Engine.makeAction_launchView();
 
-//        Engine.getUserAction();
-//        view_CuisinesContent();
-    }
-        /*
-            999 - Back To Top
-
-        */
-        public static void makeAction(){
-
-            Engine.getUserAction(); // Wait for key
-
-           if (o.userKey == 999) { //999
-                MainView.view();
-           }else{
-                view_CuisinesContent();
-           }
-        }
-
-
-    public void getActionFromUser() {
-        InputStreamReader isr = new InputStreamReader(System.in);
-        BufferedReader br = new BufferedReader(isr);
-        System.out.print(" Your choice: ");
-        //        String s=br.readLine(); // Jest Stringem
-        // int x= Integer.parseInt(br.readLine());
-        //Engine.action(x);
     }
 
     public static void view_CuisinesContent() {
 
-
-        System.out.println("Main course: " + o.getArrayOfCuisine().get(o.userKey + 1).getNameMainCourse());
-        System.out.println("Dessert: " + o.getArrayOfCuisine().get(o.userKey + 1).getNameDessert());
-        System.out.println("Price:" + o.getArrayOfCuisine().get(o.userKey + 1).getPrice());
+        System.out.println("Main course: " + o.getArrayOfCuisine().get(o.userKey - 1 ).getNameMainCourse());
+        System.out.println("Dessert: " + o.getArrayOfCuisine().get(o.userKey  - 1 ).getNameDessert());
+        System.out.println("Price:" + o.getArrayOfCuisine().get(o.userKey - 1).getPrice());
         System.out.println("5.Order");
 
+        CommonPurposeView.backToTop();
+        Engine.makeOrder_View();  // Tu jest blad
     }
-
-
-    //view Ilosc i wziasc (Acept)
-
-
 
 
 }// End of LunchView

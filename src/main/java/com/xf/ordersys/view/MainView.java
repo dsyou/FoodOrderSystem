@@ -18,10 +18,10 @@ public class MainView {
 
         System.out.println(" 1.Lunch");
         System.out.println(" 2.Drink's");
-        System.out.println(" Total Amount: ");
-        System.out.println();
+        CommonPurposeView.totalAmount();     //System.out.println("    Total Amount: ");
+        //TODO SHOW order !!!
         System.out.println(" 4.Forgot Order"); // To jest stale
-        System.out.println(" 5.Exit/Logout");  // ?? numery sie zmieniaja
+        System.out.println(" 5.Back");  // ?? numery sie zmieniaja
 
         Engine.makeAction_mainView();
     }
