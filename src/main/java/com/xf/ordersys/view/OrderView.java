@@ -32,9 +32,10 @@ public class OrderView {
         CommonPurposeView.view_SystemInfo();
 
         System.out.println(" 1.Quantity ");
-        System.out.println(" 2. Extra Lemon ");
-        System.out.println(" 3. Extra Ice cubes ");
-        System.out.println(" 5.Accept ");
+        System.out.println(" 2. Extra Lemon "); // +L
+        System.out.println(" 3. Extra Ice cubes "); // +Ice
+        System.out.println(" 4. Extra Lemon + Ice cubes "); // Lemon + Ice
+        // System.out.println(" 5.Accept "); // For future purpose
         System.out.println();
         System.out.println(" 0.Cancel ");
 

@@ -58,17 +58,6 @@ public class Engine {
 //===================================================================
 //Response Methods
 
-//public static void makeAction_globalView(){
-//
-//    Engine.getUserAction(); // Wait for key
-//
-//    if (o.userKey == 999) { //999
-//        MainView.orderLaunch_View();
-//    }else{
-//        LunchView.view_CuisinesContent();
-//    }
-//}
-
     public static void makeAction_globalView(){
 
         Engine.getUserAction(); // Wait for key
@@ -224,28 +213,34 @@ public class Engine {
 
         Engine.getUserAction(); // Wait for key
 
-//        if (o.userKey == 0) { //Cancel
-//            MainView.view();
-//        }else if (o.userKey == 1){ //Quantity + add this item into order list
-//            OrderView.quantity_View();
-//        }
-
         switch (o.userKey){
 
             case 0:
                 MainView.view();
                 break;
             case 1:
+                order.setIce(false); order.setLemon(false);
                 OrderView.quantity_View();
                 break;
             case 2:
+                // Change Order name + Lemon
+                order.setIce(false); order.setLemon(true);
+                OrderView.quantity_View();
                 break;
             case 3:
+                // Change Order name + Ice
+                order.setIce(true); order.setLemon(false);
+                OrderView.quantity_View();
                 break;
             case 4:
+                // Change Order name Lemon + Ice
+                order.setIce(true); order.setLemon(true);
+                OrderView.quantity_View();
                 break;
 
             default:
+                System.err.println("");
+                GeneralView.view();
                 break;
         }
 
@@ -254,22 +249,44 @@ public class Engine {
     public static void makeQuantity_Add(){
 
         Engine.getUserAction_Quantity(); // Wait for quantity
-        // for ilosc tyle dodaj
-        if (order.quantity == 0){
-            //back...
+
+        if (order.quantity == 0 || (order.quantity >= 100)){
+            order.quantity = -1; //back...
+            GeneralView.view();
         }else{
             //System.out.println("User key t " + (o.t));
-
             for (int i=0 ; i <order.quantity; i++){
 
                 if(o.isMenu_check()){
-                    order.getPriceOfOrderedItems().add( o.getArrayOfCuisine().get(o.t).getPrice() );    //ilosc
+                    order.getPriceOfOrderedItems().add( o.getArrayOfCuisine().get(o.t).getPrice() );
                     order.getTmp().add( o.getArrayOfCuisine().get(o.t).getPrice() );
                     order.getNamesOfOrderedItems().add( o.getArrayOfCuisine().get(o.t).getNameMainCourse() + " " + o.getArrayOfCuisine().get(o.t).getNameDessert() );  //zamowienie
                 }else{
-                    order.getPriceOfOrderedItems().add( o.getArrayOfDrinks().get(o.t).getPrice() );    //ilosc
-                    order.getTmp().add( o.getArrayOfDrinks().get(o.t).getPrice() );
-                    order.getNamesOfOrderedItems().add( o.getArrayOfDrinks().get(o.t).getName() );  //zamowienie
+                    if (!order.getLemon() && !order.getIce()){
+                        // without Limom and ice
+                        order.getPriceOfOrderedItems().add( o.getArrayOfDrinks().get(o.t).getPrice() );
+                        order.getTmp().add( o.getArrayOfDrinks().get(o.t).getPrice() );
+                        order.getNamesOfOrderedItems().add( o.getArrayOfDrinks().get(o.t).getName() );
+                    }else if (!order.getLemon() && order.getIce()){
+                        // with limon, but without ice
+                        order.getPriceOfOrderedItems().add( o.getArrayOfDrinks().get(o.t).getPrice() );
+                        order.getTmp().add( o.getArrayOfDrinks().get(o.t).getPrice() );
+                        order.getNamesOfOrderedItems().add( o.getArrayOfDrinks().get(o.t).getName() + " Ice" );
+                    }else if (order.getLemon() && !order.getIce()){
+                        // with ice, without limon
+                        order.getPriceOfOrderedItems().add( o.getArrayOfDrinks().get(o.t).getPrice() );
+                        order.getTmp().add( o.getArrayOfDrinks().get(o.t).getPrice() );
+                        order.getNamesOfOrderedItems().add( o.getArrayOfDrinks().get(o.t).getName() + " Lemon" );
+                    }else if (order.getLemon() && order.getIce()){
+                        // with limon and ice
+                        order.getPriceOfOrderedItems().add( o.getArrayOfDrinks().get(o.t).getPrice() );
+                        order.getTmp().add( o.getArrayOfDrinks().get(o.t).getPrice() );
+                        order.getNamesOfOrderedItems().add( o.getArrayOfDrinks().get(o.t).getName() + " Lemon + Ice");
+                    }
+//
+//                    order.getPriceOfOrderedItems().add( o.getArrayOfDrinks().get(o.t).getPrice() );
+//                    order.getTmp().add( o.getArrayOfDrinks().get(o.t).getPrice() );
+//                    order.getNamesOfOrderedItems().add( o.getArrayOfDrinks().get(o.t).getName() );
                 }
 
             }

@@ -23,13 +23,17 @@ public  class Order {
     public int quantity = 0;
     private Double totalAmount = 0.d;
 
+    private volatile Boolean lemon;
+    private volatile Boolean ice;
+
 //===================================================================
 // Order()
 
     public Order(){
         namesOfOrderedItems = new ArrayList<String>();
         priceOfOrderedItems = new ArrayList<Double>();
-
+        lemon = false;
+        ice = false;
         tmp = new ArrayList<Double>();
     }
 
@@ -66,17 +70,18 @@ public  class Order {
 //===================================================================
 // Order()
 
-    public void totalAmount(){
-         Double t = 0.d;
-         for (Double l: tmp){ //priceOfOrderedItems
+    public void totalAmount() {
+        Double t = 0.d;
+        for (Double l : tmp) { //priceOfOrderedItems
             t += l;
-         }
+        }
         this.totalAmount += t;
-        System.out.println( this.totalAmount );
+        System.out.println(this.totalAmount);
         tmp = new ArrayList<Double>(); //Tmp list czyszczona tutaj
 
     }
-
+//===================================================================
+// Getter / Setter()
     public List<String> getNamesOfOrderedItems() {
         return namesOfOrderedItems;
     }
@@ -101,7 +106,22 @@ public  class Order {
         return tmp;
     }
 
-    //===================================================================
+    public Boolean getLemon() {
+        return lemon;
+    }
+
+    public void setLemon(Boolean lemon) {
+        this.lemon = lemon;
+    }
+
+    public Boolean getIce() {
+        return ice;
+    }
+
+    public void setIce(Boolean ice) {
+        this.ice = ice;
+    }
+//===================================================================
 // toString()
 
     @Override

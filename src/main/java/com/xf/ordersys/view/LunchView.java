@@ -46,7 +46,7 @@ public class LunchView {
         System.out.println("5.Order");
 
         CommonPurposeView.backToTop();
-        Engine.makeOrder_View();  // Tu jest blad
+        Engine.makeOrder_View();
     }
 
 

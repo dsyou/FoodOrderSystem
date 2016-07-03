@@ -37,9 +37,10 @@ public class ManageOrderView {
 
         CommonPurposeView.view_SystemInfo();
 
-        //Listy musza miec taki same size();
+        //List must have these same size()
         if (order.getNamesOfOrderedItems().size() != order.getPriceOfOrderedItems().size()){
-            //throw
+            System.err.println("Oops order List are not equal");
+            System.exit(-1);
         }else{
             for (int i = 0; i < order.getNamesOfOrderedItems().size(); i++) {
                System.out.println((i+1)+ "." + "  Name: " + order.getNamesOfOrderedItems().get(i) + " Price: " + order.getPriceOfOrderedItems().get(i) + "$");

@@ -7,12 +7,17 @@ package com.xf.ordersys.exception;
  *
  *
  */
-public class AppExp {
+public class AppExp extends Exception{
 
 
+//===================================================================
+//()
 
+    public AppExp(String message) {
+        super(message);
+    }
 
-
-
-
+    public AppExp(String message, Throwable cause) {
+        super(message, cause);
+    }
 }

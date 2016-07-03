@@ -4,6 +4,7 @@ package com.xf.ordersys.core;
 import com.xf.ordersys.content.Cuisines;
 import com.xf.ordersys.content.Drinks;
 import com.xf.ordersys.content.OrderMenu;
+import com.xf.ordersys.exception.AppExp;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -34,7 +35,7 @@ public class DataContent {
 
 //===================================================================
 //GET CONTENT FROM EXCEL DataBase
-    public static void getContent(String path){
+    public static void getContent(String path) throws AppExp {
 
             FileInputStream excel_Data = null ; //data.xlsx
             XSSFWorkbook workbook = null;
@@ -46,11 +47,10 @@ public class DataContent {
                 setDrinksData(workbook);
                 System.out.println("***Application Start Succefully***");
             } catch (FileNotFoundException e) {
-                     //TODO  System.err.println("Brak pliku");	e.printStackTrace();
+                   	e.printStackTrace(); throw new AppExp("File Not Found");
             } // WriteSheet.xlsx
             catch (IOException e) {
-                    //TODO   System.err.println("Blad w odczycie"); e.printStackTrace();
-
+                  e.printStackTrace(); throw  new AppExp("I/O Check file structure");
             }
 
         }
@@ -60,50 +60,54 @@ public class DataContent {
  Lunch
  */
     private static void setLunchData(XSSFWorkbook workbook) { //setLunchData
+        try {
 
         XSSFSheet spreadsheet = workbook.getSheetAt(0);			//Sheet(0)-Launch
         Iterator<Row> rowIterator = spreadsheet.iterator();
 
         while (rowIterator.hasNext()) {
 
-            row =  (XSSFRow) rowIterator.next();
-            Iterator <Cell> cellIterator = row.cellIterator();
+            row = (XSSFRow) rowIterator.next();
+            Iterator<Cell> cellIterator = row.cellIterator();
 
             Cuisines cs = new Cuisines();
             while (cellIterator.hasNext()) {
 
                 Cell cell = cellIterator.next(); // Cell from Excel
 
-                if (cell.getColumnIndex()== 0){
+                if (cell.getColumnIndex() == 0) {
 
                     cs.setName(cell.getStringCellValue()); // Name e.g. Polish
 
-                }else if (cell.getColumnIndex()== 1){
+                } else if (cell.getColumnIndex() == 1) {
 
                     cs.setNameMainCourse(cell.getStringCellValue()); // Main course e.g. Schabowy
 
-                }else if (cell.getColumnIndex()== 2){
+                } else if (cell.getColumnIndex() == 2) {
 
                     cs.setNameDessert(cell.getStringCellValue()); // Dessert e.g. Makowiec
 
-                }else if (cell.getColumnIndex()== 3){
+                } else if (cell.getColumnIndex() == 3) {
 
                     cs.setPrice(cell.getNumericCellValue()); // Price e.g. 24.99$
 
                 }
-
             } // end of Cell iteration
             list_L.add(cs); // Add all parameters into list
-
         }// end of Row iteration
         menu.setArrayOfCuisine(list_L);
         showData_CuisinesList(list_L);
 
+    }catch (java.lang.IllegalStateException e){ //Invalid Format
+            System.err.println("Invalid Data in Excel Launch Cell");
     }
+
+  }
 /*
 Drinks
  */
     private static  void setDrinksData(XSSFWorkbook workbook) {
+        try {
 
         XSSFSheet spreadsheet = workbook.getSheetAt(1);			 //Sheet(1)-Drinks
         Iterator<Row> rowIterator = spreadsheet.iterator();
@@ -132,9 +136,14 @@ Drinks
 
         }// end of Row iteration
 
-        menu.setArrayOfDrinks(list_D); //TODO ...
+        menu.setArrayOfDrinks(list_D);
         showData_DrinksList(list_D);
+
+    }catch (java.lang.IllegalStateException e){ //Invalid Format
+        System.err.println("Invalid Data in Excel Drinks Cell");
     }
+
+  }
 
 
 //===================================================================

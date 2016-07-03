@@ -20,8 +20,8 @@ public class MainView {
         System.out.println(" 2.Drink's");
         CommonPurposeView.totalAmount();     //System.out.println("    Total Amount: ");
 
-        System.out.println(" 4.Show/Forgot Order"); // To jest stale
-        System.out.println(" 5.Back");  // ?? numery sie zmieniaja
+        System.out.println(" 4.Show/Forgot Order");
+        System.out.println(" 5.Back");
 
         Engine.makeAction_mainView();
     }

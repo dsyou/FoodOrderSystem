@@ -17,7 +17,7 @@ public class OrderMenu {
     private LinkedList<Cuisines> arrayOfCuisine = null; // tablica Kuchni
     private LinkedList<Drinks>   arrayOfDrinks = null; //  tablica Drinkow
 
-    public int userKey = 0;
+    public volatile int userKey = 0;
     public int t = 0;
 
     private boolean menu_check;

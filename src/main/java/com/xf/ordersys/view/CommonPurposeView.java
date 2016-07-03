@@ -15,7 +15,7 @@ public class CommonPurposeView {
 //
     public static  void view_SystemInfo(){
         System.out.println(" ============================== ");
-        System.out.println(" = Food Ordering System v.0.6 = ");
+        System.out.println(" = Food Ordering System v.0.7 = ");
         System.out.println(" ============================== ");
     }
 
@@ -35,12 +35,7 @@ public class CommonPurposeView {
 //     */
 //    public static void clearConsole(){
 
-////        char c = '\n';
-////        int length = 25;
-////        char[] chars = new char[length];
-////
-////        Arrays.fill(chars, c);
-////        System.out.print(String.valueOf(chars));
+
 //    }
 
 }
