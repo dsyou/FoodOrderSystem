@@ -9,11 +9,20 @@ package com.xf.ordersys.content;
 public class Drinks {
 
     private String name = "";
-    private int price;
-
+    private double price =0;
 
 //===================================================================
-    //
+//
+
+    public Drinks() {
+    }
+
+    public Drinks(int price, String name) {
+        this.price = price;
+        this.name = name;
+    }
+//===================================================================
+//
     public String getName() {
         return name;
     }
@@ -22,20 +31,16 @@ public class Drinks {
         this.name = name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
-    public Drinks(int price, String name) {
-        this.price = price;
-        this.name = name;
-    }
-
-
+//===================================================================
+//
     @Override
     public String toString() {
         return "Drinks{" +

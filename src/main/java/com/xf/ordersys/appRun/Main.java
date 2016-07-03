@@ -6,37 +6,22 @@ import com.xf.ordersys.view.GeneralView;
 
 import java.io.IOException;
 
-/*
-    Main Class
+/**
+ * @author Dawid Janik
  */
 public class Main {
 
     public static void main(String[] args) throws IOException {
 
-      //  ThreadApp t = new ThreadApp();
-      //  t.start();
+        ThreadApp t = new ThreadApp();
+        t.start();
 
-        DataContent.getContent("C://Food.xlsx"); // Place of ... path
+        DataContent.getContent("C://Food.xlsx"); // Place of ... path take from args ?
 
         GeneralView.view();
-        //Engine.getUserAction();
-
 
     }
-/*
- Moje UWAGI:1
-    Wyjatek zabezpieczenie przed wpisaniem znakow
-    Wyjatek przed wybraniem ilosci np  -1. lub 999 (Yeaha Sure This amount )
-    Ceny tylko w $
-    Haslo do Logowania ??
-    Czyszczenie konsoli
 
-    !!! Zamowienie Musi byc singleton !!!
-
-    Java 8 i programowanie ogolne <T>, abstrakcja, interfejs, i polimorfizm
-    Logger zamiast "dupa"
-    Moze dodac zapis do pliku
- */
 
   //TODO ...
     // 1.Tylko commnad-line interface

@@ -18,11 +18,12 @@ public class OrderMenu {
     private LinkedList<Drinks>   arrayOfDrinks = null; //  tablica Drinkow
 
     public int userKey = 0;
+    public int t = 0;
 
-
+    private boolean menu_check;
 
 //=================================================================================================================
-//
+//Getter and Setter
 
     public static OrderMenu getInstance() {
         return instance;
@@ -48,7 +49,13 @@ public class OrderMenu {
         this.arrayOfDrinks = arrayOfDrinks;
     }
 
+    public void setMenu_check(boolean menu_check) {
+        this.menu_check = menu_check;
+    }
 
+    public boolean isMenu_check() {
+        return menu_check;
+    }
 //=================================================================================================================
 //Method Singleton
 

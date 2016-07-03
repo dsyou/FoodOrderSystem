@@ -18,6 +18,7 @@ public  class Order {
     private List<String>  namesOfOrderedItems; // Uwaga Null
     private List<Double>  priceOfOrderedItems;
 
+    private List<Double>  tmp; // Temporary Price List
 
     public int quantity = 0;
     private Double totalAmount = 0.d;
@@ -28,6 +29,8 @@ public  class Order {
     public Order(){
         namesOfOrderedItems = new ArrayList<String>();
         priceOfOrderedItems = new ArrayList<Double>();
+
+        tmp = new ArrayList<Double>();
     }
 
 
@@ -40,8 +43,8 @@ public  class Order {
 
      */
     public  void dropOrder(){
-        namesOfOrderedItems.forEach(s ->s = ""); // vs new list ??
-        priceOfOrderedItems.forEach(i ->i =0.d);
+        this.namesOfOrderedItems = new ArrayList<String>(); //.forEach(s ->s = ""); // vs new list ??
+        this.priceOfOrderedItems = new ArrayList<Double>();//.forEach(i ->i =0.d);
         quantity = 0;
         totalAmount = 0.d;
     }
@@ -64,11 +67,13 @@ public  class Order {
 // Order()
 
     public void totalAmount(){
-
-         for (Double l: priceOfOrderedItems){
-                this.totalAmount += l;
+         Double t = 0.d;
+         for (Double l: tmp){ //priceOfOrderedItems
+            t += l;
          }
-
+        this.totalAmount += t;
+        System.out.println( this.totalAmount );
+        tmp = new ArrayList<Double>(); //Tmp list czyszczona tutaj
 
     }
 
@@ -92,7 +97,11 @@ public  class Order {
         return totalAmount;
     }
 
-//===================================================================
+    public List<Double> getTmp() {
+        return tmp;
+    }
+
+    //===================================================================
 // toString()
 
     @Override

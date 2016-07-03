@@ -24,7 +24,7 @@ public class Engine {
         super();
     }
 //===================================================================
-//
+// Get Response to User Action
     public static void getUserAction()  {
 
         InputStreamReader isr = new InputStreamReader(System.in);
@@ -63,7 +63,7 @@ public class Engine {
 //    Engine.getUserAction(); // Wait for key
 //
 //    if (o.userKey == 999) { //999
-//        MainView.view();
+//        MainView.orderLaunch_View();
 //    }else{
 //        LunchView.view_CuisinesContent();
 //    }
@@ -92,15 +92,19 @@ public class Engine {
             switch (o.userKey) {
 
                 case 1: //Lunch
+                    o.setMenu_check(true);
+                   // System.out.println("o.menu_check " + o.menu_check);
                     LunchView.view();
                     // Engine.actionLunch(Engine.getUserAction());
                     break;
                 case 2: //Drink's
+                    o.setMenu_check(false);
+                   // System.out.println("o.menu_check " + o.menu_check);
                     DrinkView.view();
                     //   Engine.actionDrinks(Engine.getUserAction());
                     break;
                 case 4: //Forgot Order
-                    MangeOrderVIew.view();
+                    ManageOrderView.view();
                     //  Engine.actionLunch(Engine.getUserAction());
                     break;
                 case 5: // Exit/Logout
@@ -109,17 +113,18 @@ public class Engine {
                      break;
 
                 default:
-                    System.err.println("Something very bad here...LunchView");
+                    System.err.println("Something very bad here...makeAction_mainView");
+                    GeneralView.view();
             }
         }
     }
 //===================================================================
-// Manage
+// Manage --- show/drop order
     public static void makeAction_manageView() {
         Engine.getUserAction(); // Wait for key
 
         if (o.userKey == 1) { //Show order option
-
+            ManageOrderView.view_show();
         } else if (o.userKey == 5) { // Forgot all in order
             order.dropOrder();
             MainView.view();
@@ -127,6 +132,31 @@ public class Engine {
             MainView.view();
         }
     }
+    public static void makeAction_showView() {
+        Engine.getUserAction(); // Wait for key
+
+         if (o.userKey == 0) { // Cancel or back option
+            MainView.view();
+        }
+    }
+
+    public static void makeAction_showTransactionStatus_Succes() {
+        Engine.getUserAction(); // Wait for key
+
+        order.dropOrder();
+        if (o.userKey == 0) { // Cancel or back option
+            GeneralView.view();
+        }
+    }
+
+    public static void makeAction_showTransactionStatus_Error() {
+        Engine.getUserAction(); // Wait for key
+
+        if (o.userKey == 0) { // Cancel or back option
+            GeneralView.view();
+        }
+    }
+
 //===================================================================
 // Launch
 
@@ -138,7 +168,10 @@ public class Engine {
             MainView.view();
         }else{
            //o.getArrayOfCuisine().get(o.userKey -1);//
+            o.t = o.userKey - 1;
+            System.out.println("User key t " + (o.t));
             LunchView.view_CuisinesContent();
+
         }
     }
 
@@ -150,10 +183,12 @@ public class Engine {
 
         Engine.getUserAction(); // Wait for key
 
-        if (o.userKey == 999) { //999
-            System.exit(0);
+        if (o.userKey == 0) { //999
+            MainView.view();
         }else{
-          //  action();
+            o.t = o.userKey - 1;
+            System.out.println("User key t- Drinks  " + (o.t));
+            DrinkView.view_DrinksContent();
         }
     }
 
@@ -162,23 +197,56 @@ public class Engine {
 
     public static void makeOrder_View(){
             Engine.getUserAction();
+
             if (o.userKey == 0) { //Cancel
-                MainView.view(); //Or maybe LunchView.view();
+                MainView.view(); //Or maybe LunchView.orderLaunch_View();
             }
-            OrderView.view();
+            if (o.isMenu_check()){ // True Launch bool flags
+                OrderView.orderLaunch_View();
+            }else{ // False Drinks
+                OrderView.orderDrink_View();
+            }
     }
 
-    public static void makeAction_Order() {
+    public static void makeActionLaunch_Order() {
 
         Engine.getUserAction(); // Wait for key
 
         if (o.userKey == 0) { //Cancel
-            MainView.view(); //Or maybe LunchView.view();
+            MainView.view(); //Or maybe LunchView.orderLaunch_View();
         }else if (o.userKey == 1){ //Quantity + add this item into order list
             OrderView.quantity_View();
+        }
 
-        }else if (o.userKey == 2) { // Accept, and back into  LunchView
-            LunchView.view();
+    }
+
+    public static void makeActionDrink_Order() {
+
+        Engine.getUserAction(); // Wait for key
+
+//        if (o.userKey == 0) { //Cancel
+//            MainView.view();
+//        }else if (o.userKey == 1){ //Quantity + add this item into order list
+//            OrderView.quantity_View();
+//        }
+
+        switch (o.userKey){
+
+            case 0:
+                MainView.view();
+                break;
+            case 1:
+                OrderView.quantity_View();
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+
+            default:
+                break;
         }
 
     }
@@ -190,18 +258,27 @@ public class Engine {
         if (order.quantity == 0){
             //back...
         }else{
+            //System.out.println("User key t " + (o.t));
+
             for (int i=0 ; i <order.quantity; i++){
-                order.getPriceOfOrderedItems().add( o.getArrayOfCuisine().get(o.userKey - 1).getPrice() );    //ilosc
-                order.getNamesOfOrderedItems().add( o.getArrayOfCuisine().get(o.userKey - 1).getNameMainCourse() + " " + o.getArrayOfCuisine().get(o.userKey - 1).getNameDessert() );  //zamowienie
+
+                if(o.isMenu_check()){
+                    order.getPriceOfOrderedItems().add( o.getArrayOfCuisine().get(o.t).getPrice() );    //ilosc
+                    order.getTmp().add( o.getArrayOfCuisine().get(o.t).getPrice() );
+                    order.getNamesOfOrderedItems().add( o.getArrayOfCuisine().get(o.t).getNameMainCourse() + " " + o.getArrayOfCuisine().get(o.t).getNameDessert() );  //zamowienie
+                }else{
+                    order.getPriceOfOrderedItems().add( o.getArrayOfDrinks().get(o.t).getPrice() );    //ilosc
+                    order.getTmp().add( o.getArrayOfDrinks().get(o.t).getPrice() );
+                    order.getNamesOfOrderedItems().add( o.getArrayOfDrinks().get(o.t).getName() );  //zamowienie
+                }
+
             }
             order.totalAmount();
             System.out.println(order.toString());
-            LunchView.view();
+            GeneralView.view();
         }
 
-
     }
-
 
 
 } // End of Engine

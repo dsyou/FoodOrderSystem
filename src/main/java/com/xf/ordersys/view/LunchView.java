@@ -10,7 +10,6 @@ import com.xf.ordersys.core.Engine;
  */
 public class LunchView {
 
-
     public LunchView() {
         super();
     } //
@@ -19,7 +18,7 @@ public class LunchView {
 
 
 //=================================================================================================================
-//Another Methods
+// Methods
 
     public static void view() {
 
@@ -38,9 +37,12 @@ public class LunchView {
 
     public static void view_CuisinesContent() {
 
+        CommonPurposeView.view_SystemInfo();
+
         System.out.println("Main course: " + o.getArrayOfCuisine().get(o.userKey - 1 ).getNameMainCourse());
         System.out.println("Dessert: " + o.getArrayOfCuisine().get(o.userKey  - 1 ).getNameDessert());
         System.out.println("Price:" + o.getArrayOfCuisine().get(o.userKey - 1).getPrice());
+        System.out.println();
         System.out.println("5.Order");
 
         CommonPurposeView.backToTop();

@@ -15,14 +15,11 @@ public class CommonPurposeView {
 //
     public static  void view_SystemInfo(){
         System.out.println(" ============================== ");
-        System.out.println(" = Food Ordering System v.0.4 = ");
+        System.out.println(" = Food Ordering System v.0.6 = ");
         System.out.println(" ============================== ");
     }
 
-    //ilosc towaru
-    public static void quantity(){
-            // ile bieremy sztuk
-    }
+
 
     public static void totalAmount(){
         System.out.println("    Total Amount: " + order.getTotalAmount()  + "$");
@@ -30,20 +27,20 @@ public class CommonPurposeView {
 
     public static void backToTop(){
         System.out.println("");
-        System.out.println("0. Back to Top"); //TODO powrot zawsze do Glownego View !!! Or Exit
+        System.out.println("0. Back to Top");
     }
 
-    /*
-      Clear the console
-     */
-    public static void clearConsole(){
-        // Ten Skok to zly pomysl
-//        char c = '\n';
-//        int length = 25;
-//        char[] chars = new char[length];
-//
-//        Arrays.fill(chars, c);
-//        System.out.print(String.valueOf(chars));
-    }
+//    /*
+//      Clear the console TODO Maybe in future : )
+//     */
+//    public static void clearConsole(){
+
+////        char c = '\n';
+////        int length = 25;
+////        char[] chars = new char[length];
+////
+////        Arrays.fill(chars, c);
+////        System.out.print(String.valueOf(chars));
+//    }
 
 }

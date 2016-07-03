@@ -1,6 +1,7 @@
 package com.xf.ordersys.view;
 
-import com.xf.ordersys.content.Drinks;
+import com.xf.ordersys.content.OrderMenu;
+import com.xf.ordersys.core.Engine;
 
 /**
  * Created by Dawid Janik on 2016-06-28.
@@ -15,18 +16,45 @@ public class DrinkView {
         super();
     }
 
-    public static Drinks[] tab;
+    private static OrderMenu o = OrderMenu.getInstace();
+
+//=================================================================================================================
+// Methods
+
+
 
     public static void view(){
-        System.out.println(" Food Ordering System v.0.1");
 
-        System.out.println(" 1. Mochito" + tab[0]);
-        System.out.println(" 2. Margaritas");
-        System.out.println(" 3. Manhattan");
+        CommonPurposeView.view_SystemInfo();
 
+        for (int i = 0; i < o.getArrayOfDrinks().size(); i++) {
+            System.out.println("" + (i + 1) + "." + o.getArrayOfDrinks().get(i).getName() ); //+ " $" + o.getArrayOfDrinks().get(i).getPrice()
+        }
+
+        CommonPurposeView.totalAmount();
+        CommonPurposeView.backToTop();
+
+        Engine.makeAction_drinkView();
     }
 
-    public static void mexico() {
 
+
+    //ice cubes or/and lemon
+    public static void view_DrinksContent() {
+
+        CommonPurposeView.view_SystemInfo();
+
+        System.out.println("Drink name: " + o.getArrayOfDrinks().get(o.userKey - 1 ).getName());
+
+        System.out.println("Price:" + o.getArrayOfDrinks().get(o.userKey - 1).getPrice() + "$");
+        System.out.println();
+        System.out.println("5.Order");
+
+        CommonPurposeView.backToTop();
+        Engine.makeOrder_View();  // Tu jest blad
     }
-}
+
+
+
+
+} // End of DrinkView
