@@ -4,10 +4,13 @@ import com.xf.ordersys.core.Engine;
 import com.xf.ordersys.core.Order;
 
 /**
- * Created by Dawid Janik on 2016-06-28.
+ * View class describes the menu of command line interfaces
+ * Each position contains numeric value responsible to
+ * specific action assigned to this value (e.g 0. Cancel action)
  *
+ * This class responds to sout Manage order content:
  *
- *
+ * @author Dawid Janik
  */
 public class ManageOrderView {
 
@@ -33,11 +36,14 @@ public class ManageOrderView {
 
     }
 
+    /**
+     * Purpose of this method is to show all items ordered by current transaction.
+     */
     public static void view_show() {
 
         CommonPurposeView.view_SystemInfo();
 
-        //List must have these same size()
+        //List must have the same size()
         if (order.getNamesOfOrderedItems().size() != order.getPriceOfOrderedItems().size()){
             System.err.println("Oops order List are not equal");
             System.exit(-1);

@@ -8,10 +8,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Created by Dawid Janik on 2016-06-27.
  *
- *
- *
+ * @author Dawid Janik
  */
 public class Engine {
 
@@ -23,8 +21,10 @@ public class Engine {
     public Engine(){
         super();
     }
+
 //===================================================================
 // Get Response to User Action
+
     public static void getUserAction()  {
 
         InputStreamReader isr = new InputStreamReader(System.in);

@@ -4,10 +4,13 @@ import com.xf.ordersys.content.OrderMenu;
 import com.xf.ordersys.core.Engine;
 
 /**
- * Created by Dawid Janik on 2016-06-28.
+ * View class describes the menu of command line interfaces
+ * Each position contains numeric value responsible to
+ * specific action assigned to this value (e.g 0. Cancel action)
  *
+ * This class responds to sout drink's order content.
  *
- *
+ * @author Dawid Janik
  */
 
 public class DrinkView {
@@ -51,7 +54,7 @@ public class DrinkView {
         System.out.println("5.Order");
 
         CommonPurposeView.backToTop();
-        Engine.makeOrder_View();  // Tu jest blad
+        Engine.makeOrder_View();
     }
 
 

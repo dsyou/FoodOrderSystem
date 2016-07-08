@@ -4,11 +4,13 @@ import com.xf.ordersys.core.Engine;
 import com.xf.ordersys.core.Order;
 
 /**
- * Created by XCVB on 2016-07-01.
+ * View class describes the menu of command line interfaces
+ * Each position contains numeric value responsible to
+ * specific action assigned to this value (e.g 0. Back)
+ *
+ * This class responds to sout payment content.
+ *
  * @author  Dawid Janik
- *
- *
- *
  */
 public class PaymentView {
 

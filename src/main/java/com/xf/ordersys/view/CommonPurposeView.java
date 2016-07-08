@@ -3,9 +3,13 @@ package com.xf.ordersys.view;
 import com.xf.ordersys.core.Order;
 
 /**
- * Created by Dawid Janik on 2016-06-28.
+ * View class describes the menu of command line interfaces
+ * Each position contains numeric value responsible to
+ * specific action assigned to this value (e.g 0. Cancel action)
  *
+ * This class responds to sout common purpose view (e.g SystemInfo)
  *
+ * @author Dawid Janik
  */
 public class CommonPurposeView {
 
@@ -31,7 +35,8 @@ public class CommonPurposeView {
     }
 
 //    /*
-//      Clear the console TODO Maybe in future : )
+//      Clear the console
+//      TODO Maybe in future : )
 //     */
 //    public static void clearConsole(){
 

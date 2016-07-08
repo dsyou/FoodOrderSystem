@@ -19,29 +19,37 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
- * Created by Dawid Janik on 2016-06-29.
+ * This class consists methods that operate on Excel file
+ * and return list of Cuisines and Drinks
  *
+ * <p> The methods of this class can throw <tt>AppExp<tt/>
  *
- *
- */
+ * @author Dawid Janik
+*/
 public class DataContent {
 
-         static XSSFRow row;  // XML SpreadSheet Format
-         private static OrderMenu menu = OrderMenu.getInstace();
-
+   static XSSFRow row;  // XML SpreadSheet Format
+   private static OrderMenu menu = OrderMenu.getInstace();
 
     private static LinkedList<Cuisines> list_L = new LinkedList<Cuisines>();
     private static LinkedList<Drinks> list_D = new LinkedList<Drinks>();
 
 //===================================================================
 //GET CONTENT FROM EXCEL DataBase
+
+    /**
+     * IMPORTANT XSSFWorkbook support .xlsx Excel file
+     *
+     * @param path physical address of Excel file
+     * @throws AppExp if file not exist or is damaged
+     */
     public static void getContent(String path) throws AppExp {
 
             FileInputStream excel_Data = null ; //data.xlsx
             XSSFWorkbook workbook = null;
 
             try {
-                excel_Data = new FileInputStream(new File(path)); //Place for addres
+                excel_Data = new FileInputStream(new File(path)); //Place for address
                 workbook = new XSSFWorkbook(excel_Data); //DataContent
                 setLunchData(workbook);
                 setDrinksData(workbook);
@@ -56,9 +64,14 @@ public class DataContent {
         }
 
 
-/*
- Lunch
- */
+    /**
+     * This method is used to update Lunch menu content List with Sheet(0)-Launch
+     *
+     * @exception  IllegalStateException if data in Sheet(0) is invalid
+     * e.g specific cell contains String value instead of numeric value
+     *
+     * @param workbook  High level representation of a SpreadsheetML workbook.
+     */
     private static void setLunchData(XSSFWorkbook workbook) { //setLunchData
         try {
 
@@ -103,9 +116,15 @@ public class DataContent {
     }
 
   }
-/*
-Drinks
- */
+
+    /**
+     * This method is used to update Drink menu content List with Sheet(1)-Drinks
+     *
+     * @exception  IllegalStateException if data in Sheet(1) is invalid
+     * e.g specific cell contains String value instead of numeric value
+     *
+     * @param workbook  High level representation of a SpreadsheetML workbook.
+     */
     private static  void setDrinksData(XSSFWorkbook workbook) {
         try {
 

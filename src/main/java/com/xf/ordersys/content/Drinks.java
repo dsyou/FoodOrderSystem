@@ -1,15 +1,15 @@
 package com.xf.ordersys.content;
 
 /**
- * Created by Dawid Janik on 2016-06-27.
+ * This class contains representations of the each object "Drinks"
  *
- *
+ * @author Dawid Janik
  */
 
 public class Drinks {
 
     private String name = "";
-    private double price =0;
+    private double price = 0;
 
 //===================================================================
 //

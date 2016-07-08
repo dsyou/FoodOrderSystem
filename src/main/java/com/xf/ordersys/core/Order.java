@@ -5,17 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Dawid Janik on 2016-06-28.
+ * This class contains representations of the each order placed
+ * by user action.
+ * Object of this class is immutable during the executed order
+ * Singleton design
  *
- *
- *
+ * @author Dawid Janik
  */
 public  class Order {
 
 
     private static Order instance;
 
-    private List<String>  namesOfOrderedItems; // Uwaga Null
+    private List<String>  namesOfOrderedItems;
     private List<Double>  priceOfOrderedItems;
 
     private List<Double>  tmp; // Temporary Price List
@@ -43,11 +45,12 @@ public  class Order {
         this.priceOfOrderedItems = totalPrice;
     }
 
-    /*
-
+    /**
+     * If the order has been executed
+     * List of orderedItems and price should be overwritten
      */
     public  void dropOrder(){
-        this.namesOfOrderedItems = new ArrayList<String>(); //.forEach(s ->s = ""); // vs new list ??
+        this.namesOfOrderedItems = new ArrayList<String>(); //.forEach(s ->s = "");
         this.priceOfOrderedItems = new ArrayList<Double>();//.forEach(i ->i =0.d);
         quantity = 0;
         totalAmount = 0.d;
@@ -77,7 +80,7 @@ public  class Order {
         }
         this.totalAmount += t;
         System.out.println(this.totalAmount);
-        tmp = new ArrayList<Double>(); //Tmp list czyszczona tutaj
+        tmp = new ArrayList<Double>(); //Tmp list is clearing here
 
     }
 //===================================================================
@@ -133,4 +136,5 @@ public  class Order {
                 ", totalAmount=" + totalAmount +
                 '}';
     }
+
 }// End of Order

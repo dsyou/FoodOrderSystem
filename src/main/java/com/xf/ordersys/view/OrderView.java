@@ -3,11 +3,13 @@ package com.xf.ordersys.view;
 import com.xf.ordersys.core.Engine;
 
 /**
- * Created by XCVB on 2016-06-28.
+ * View class describes the menu of command line interfaces
+ * Each position contains numeric value responsible to
+ * specific action assigned to this value (e.g 0. Cancel action)
+ *
+ * This class responds to sout order content (quantity, extra option).
+ *
  * @author  Dawid Janik
- *
- *
- *
  */
 public class OrderView {
 

@@ -3,11 +3,11 @@ package com.xf.ordersys.content;
 import java.util.LinkedList;
 
 /**
- * Created by Dawid Janik on 2016-06-29.
+ * This class contains representations of the object Order Menu.
+ * This object contains list of available Cuisine/dishes and drinks.
+ * Object of this class is implement as singleton schema.
+ *
  *@author Dawid Janik
- *
- *
- *
  */
 public class OrderMenu {
 
@@ -72,7 +72,7 @@ public class OrderMenu {
 //=================================================================================================================
 //Another Methods
 
-//    public int get
+
 
 
 } // end of OrderMenu
