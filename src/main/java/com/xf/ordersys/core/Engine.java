@@ -8,6 +8,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
+ * This class consists methods that perform proper action
+ * depends on user choice. In another way this Methods are
+ * to navigate among each specific command - line view
+ * interface
  *
  * @author Dawid Janik
  */
@@ -25,10 +29,16 @@ public class Engine {
 //===================================================================
 // Get Response to User Action
 
+    /**
+     * This kind of methods are used to get user choice from
+     * command line. Choosing value is save in proper variable
+     * and available for rules method defined below in Response
+     * Methods section.
+     */
     public static void getUserAction()  {
 
         InputStreamReader isr = new InputStreamReader(System.in);
-        BufferedReader br=new BufferedReader(isr);
+        BufferedReader br = new BufferedReader(isr);
 
         System.out.print("Your Choice...");
 
@@ -43,7 +53,7 @@ public class Engine {
     public static void getUserAction_Quantity()  {
 
         InputStreamReader isr = new InputStreamReader(System.in);
-        BufferedReader br=new BufferedReader(isr);
+        BufferedReader br = new BufferedReader(isr);
 
         System.out.print("Enter amount...");
 
@@ -57,6 +67,11 @@ public class Engine {
     }
 //===================================================================
 //Response Methods
+    /**
+     * This kind of methods is used to launch proper
+     * application console view and make action if
+     * need to.
+     */
 
     public static void makeAction_globalView(){
 
@@ -107,8 +122,9 @@ public class Engine {
             }
         }
     }
-//===================================================================
-// Manage --- show/drop order
+    //===================================================================
+    // Response Manage --- show/drop order
+
     public static void makeAction_manageView() {
         Engine.getUserAction(); // Wait for key
 
@@ -146,8 +162,8 @@ public class Engine {
         }
     }
 
-//===================================================================
-// Launch
+    //===================================================================
+    //Response Launch
 
     public static void makeAction_launchView(){
 
@@ -165,8 +181,8 @@ public class Engine {
     }
 
 
-//===================================================================
-//Drinks
+    //===================================================================
+    //Response Drinks
 
     public static void makeAction_drinkView(){
 
@@ -181,8 +197,8 @@ public class Engine {
         }
     }
 
-//===================================================================
-//Make Order
+    //===================================================================
+    //Response Make Order
 
     public static void makeOrder_View(){
             Engine.getUserAction();

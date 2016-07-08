@@ -20,7 +20,7 @@ import java.util.LinkedList;
 
 /**
  * This class consists methods that operate on Excel file
- * and return list of Cuisines and Drinks
+ * and return list of Cuisines and Drinks.
  *
  * <p> The methods of this class can throw <tt>AppExp<tt/>
  *
