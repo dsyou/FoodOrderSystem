@@ -21,13 +21,18 @@ by editing Excel Workbook. This project supports only XSSF format
 
 ##Running the aplication
 Once you have cloned the repository to your local machine, follow the directions below:   
-1. Set the path into Food Excel file.   
+1. Set the path to Food Excel file. You can set this path by two different ways directly from main class 
+or with first program arguments args[0].
+2. If you want to change content of Excel remeber that:
+  * First Sheet contains Launch data (Name of Cuisines, Main course, Dessert, Price)
+  * Second Sheet contains Drinks data (Name, Price).
 
 
 ##Using the aplication
 1. Execution of action depends on the user's choice. Depending on the entered value it is possible to 
-navigate via appliaction view, make order and etc. 
-3.
+navigate via appliaction view, make order and etc.  
+
+**IMPORTANT!** To make transaction complete select payment option in the General view.
 
 
 
