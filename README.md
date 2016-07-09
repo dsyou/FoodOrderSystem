@@ -10,7 +10,10 @@ for operations on input Excel file was used Apache POI library.
 - Lunch consists of the main course and dessert
 - When ordering a drink, the customer can additionally ask for ice cubes or/and lemon  
 
-
+**Aditional feauteres**
+- It's possible to mix order items via one transaction
+- It's possible to order itmes with specific quantity (from 1 to 998)
+- It's possible to show/forgot current order and continue work with the new one 
 
 **IMPORTANT!** The solution is extendable it is possible to add new postion( new cuisines/dishes) into application
 by editing Excel Workbook. This project supports only XSSF format 
@@ -19,8 +22,12 @@ by editing Excel Workbook. This project supports only XSSF format
 ##Running the aplication
 Once you have cloned the repository to your local machine, follow the directions below:   
 1. Set the path into Food Excel file.   
-2. Execution of action depends on the user's choice. Depending on the entered value it is possible to 
+
+
+##Using the aplication
+1. Execution of action depends on the user's choice. Depending on the entered value it is possible to 
 navigate via appliaction view, make order and etc. 
+3.
 
 
 
