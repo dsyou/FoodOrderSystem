@@ -5,7 +5,7 @@ import java.util.LinkedList;
 /**
  * This class contains representations of the object Order Menu.
  * This object contains list of available Cuisine/dishes and drinks.
- * Object of this class is implement as singleton schema.
+ * Object of this class is implement as singleton design pattern.
  *
  *@author Dawid Janik
  */
@@ -14,8 +14,8 @@ public class OrderMenu {
 
     private static OrderMenu instance = null;
 
-    private LinkedList<Cuisines> arrayOfCuisine = null; // tablica Kuchni
-    private LinkedList<Drinks>   arrayOfDrinks = null; //  tablica Drinkow
+    private LinkedList<Cuisines> arrayOfCuisine = null; // List of Cuisine
+    private LinkedList<Drinks>   arrayOfDrinks = null; //  List of Drinks
 
     public volatile int userKey = 0;
     public int t = 0;

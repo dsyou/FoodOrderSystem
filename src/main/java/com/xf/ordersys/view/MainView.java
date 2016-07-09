@@ -4,7 +4,7 @@ import com.xf.ordersys.core.Engine;
 
 /**
  * View class describes the menu of command line interfaces
- * Each position contains numeric value responsible to
+ * Each position contains numeric values responsible to
  * specific action assigned to this value (e.g 5. Back to previous view)
  *
  * This class responds to sout Main view order content.

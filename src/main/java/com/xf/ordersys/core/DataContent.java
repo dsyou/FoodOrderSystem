@@ -20,7 +20,7 @@ import java.util.LinkedList;
 
 /**
  * This class consists methods that operate on Excel file
- * and return list of Cuisines and Drinks.
+ * and returns list of Cuisines and Drinks.
  *
  * <p> The methods of this class can throw <tt>AppExp<tt/>
  *
@@ -38,7 +38,7 @@ public class DataContent {
 //GET CONTENT FROM EXCEL DataBase
 
     /**
-     * IMPORTANT XSSFWorkbook support .xlsx Excel file
+     * IMPORTANT XSSFWorkbook support .xlsx Excel file (2007 and newest)
      *
      * @param path physical address of Excel file
      * @throws AppExp if file not exist or is damaged
@@ -68,7 +68,7 @@ public class DataContent {
      * This method is used to update Lunch menu content List with Sheet(0)-Launch
      *
      * @exception  IllegalStateException if data in Sheet(0) is invalid
-     * e.g specific cell contains String value instead of numeric value
+     * e.g specific cell contains String value instead of numeric value.
      *
      * @param workbook  High level representation of a SpreadsheetML workbook.
      */

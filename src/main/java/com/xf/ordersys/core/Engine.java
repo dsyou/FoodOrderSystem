@@ -9,9 +9,9 @@ import java.io.InputStreamReader;
 
 /**
  * This class consists methods that perform proper action
- * depends on user choice. In another way this Methods are
+ * depends on user choice. In another way these Methods are
  * to navigate among each specific command - line view
- * interface
+ * interface.
  *
  * @author Dawid Janik
  */
@@ -31,7 +31,7 @@ public class Engine {
 
     /**
      * This kind of methods are used to get user choice from
-     * command line. Choosing value is save in proper variable
+     * command line. Choosing value is saved in proper variable
      * and available for rules method defined below in Response
      * Methods section.
      */
@@ -68,7 +68,7 @@ public class Engine {
 //===================================================================
 //Response Methods
     /**
-     * This kind of methods is used to launch proper
+     * These kind of methods are used to launch proper
      * application console view and make action if
      * need to.
      */

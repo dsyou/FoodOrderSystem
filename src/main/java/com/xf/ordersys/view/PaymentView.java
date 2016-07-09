@@ -5,7 +5,7 @@ import com.xf.ordersys.core.Order;
 
 /**
  * View class describes the menu of command line interfaces
- * Each position contains numeric value responsible to
+ * Each position contains numeric values responsible to
  * specific action assigned to this value (e.g 0. Back)
  *
  * This class responds to sout payment content.

@@ -16,8 +16,8 @@ public class AppExp extends Exception{
 //Constructs()
 
     /**
-     * Constructs an AppExp with the specified detail
-     * message.  A detail message is a String that describes this particular
+     * Constructs an AppExp with the specified detail message.
+     * A detail message is a String that describes this particular
      * exception.
      *
      * @param message

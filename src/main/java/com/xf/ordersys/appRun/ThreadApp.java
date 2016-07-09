@@ -5,7 +5,7 @@ import com.xf.ordersys.core.Order;
 
 /**
  * This class contain an implementation of Thread which is used
- * for listing to incorrect user action taken from command line interfaces
+ * for listing to incorrect user action taken from command line interfaces.
  *
  * @author Dawid Janik
   */
@@ -26,7 +26,7 @@ public class ThreadApp extends Thread {
     /**
      * In this method Thread is always running.
      * After taken incorrect value from user choices.
-     * Specific action appear.
+     * Specific action appears.
      *
      * @return void
      */

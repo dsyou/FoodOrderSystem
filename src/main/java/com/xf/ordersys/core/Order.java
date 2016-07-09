@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * This class contains representations of the each order placed
- * by user action.
+ * by user actions.
  * Object of this class is immutable during the executed order
  * singleton design.
  *
