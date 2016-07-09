@@ -19,10 +19,10 @@ for operations on input Excel file was used Apache POI library.
 by editing Excel Workbook. This project supports only XSSF format 
 (XSSF is the POI project implementation of the Excel 2007.xlsx file format)   
 
-##Running the aplication
-Once you have cloned the repository to your local machine, follow the directions below:   
+##Running the aplication  
+Once you have cloned the repository to your local machine, follow the directions below:     
 1. Set the path to Food Excel file. You can set this path by two different ways directly from main class 
-or with first program arguments args[0].
+or with first program arguments args[0].  
 2. If you want to change content of Excel remeber that:
   * First Sheet contains Launch data (Name of Cuisines, Main course, Dessert, Price)
   * Second Sheet contains Drinks data (Name, Price).
