@@ -15,7 +15,7 @@ for operations on input Excel file was used Apache POI library.
 - It's possible to order items with specific quantity (from 1 to 998)
 - It's possible to show/forgot current order and continue work with the new one 
 
-**IMPORTANT!** The solution is extendable and it is possible to add new postion( new cuisines/dishes) into the application
+**IMPORTANT!** The solution is extendable and it is possible to add new position( new cuisines/dishes) into the application
 by editing Excel Workbook. This project supports only XSSF format 
 (XSSF is the POI project implementation of the Excel 2007.xlsx file format)   
 
