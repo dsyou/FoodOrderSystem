@@ -1,5 +1,5 @@
 # Food Ordering System
-This repository contains the implementation of Food Ordering System aplication wirtten in Java. The project was builded with Maven,
+This repository contains the implementation of Food Ordering System aplication wirtten in Java. The project was build with Maven,
 for operations on input Excel file was used Apache POI library.
 
 ## Aplication descriptions
