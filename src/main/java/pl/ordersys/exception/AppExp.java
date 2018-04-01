@@ -1,4 +1,4 @@
-package com.xf.ordersys.exception;
+package pl.ordersys.exception;
 
 /**
  * Signals that a method has been invoked at an illegal or

@@ -1,9 +1,9 @@
-package com.xf.ordersys.appRun;
+package pl.ordersys.appRun;
 
 
-import com.xf.ordersys.core.DataContent;
-import com.xf.ordersys.exception.AppExp;
-import com.xf.ordersys.view.GeneralView;
+import pl.ordersys.core.DataContent;
+import pl.ordersys.exception.AppExp;
+import pl.ordersys.view.GeneralView;
 
 /**
  * <h1>Food Ordering System<h1/>

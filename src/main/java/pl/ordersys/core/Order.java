@@ -1,4 +1,4 @@
-package com.xf.ordersys.core;
+package pl.ordersys.core;
 
 
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
-package com.xf.ordersys.core;
+package pl.ordersys.core;
 
-import com.xf.ordersys.content.OrderMenu;
-import com.xf.ordersys.view.*;
+import pl.ordersys.content.OrderMenu;
+import pl.ordersys.view.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;

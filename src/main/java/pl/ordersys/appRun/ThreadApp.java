@@ -1,7 +1,7 @@
-package com.xf.ordersys.appRun;
+package pl.ordersys.appRun;
 
-import com.xf.ordersys.content.OrderMenu;
-import com.xf.ordersys.core.Order;
+import pl.ordersys.content.OrderMenu;
+import pl.ordersys.core.Order;
 
 /**
  * This class contain an implementation of Thread which is used

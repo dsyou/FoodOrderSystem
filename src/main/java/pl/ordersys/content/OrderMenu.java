@@ -1,4 +1,4 @@
-package com.xf.ordersys.content;
+package pl.ordersys.content;
 
 import java.util.LinkedList;
 

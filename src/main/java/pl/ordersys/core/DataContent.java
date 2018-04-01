@@ -1,10 +1,10 @@
-package com.xf.ordersys.core;
+package pl.ordersys.core;
 
 
-import com.xf.ordersys.content.Cuisines;
-import com.xf.ordersys.content.Drinks;
-import com.xf.ordersys.content.OrderMenu;
-import com.xf.ordersys.exception.AppExp;
+import pl.ordersys.content.Cuisines;
+import pl.ordersys.content.Drinks;
+import pl.ordersys.content.OrderMenu;
+import pl.ordersys.exception.AppExp;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFRow;

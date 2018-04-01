@@ -1,4 +1,4 @@
-package com.xf.ordersys.content;
+package pl.ordersys.content;
 
 /**
  * This class contains representations of the each object "Drinks"

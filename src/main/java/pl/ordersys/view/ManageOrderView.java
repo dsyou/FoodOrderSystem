@@ -1,7 +1,7 @@
-package com.xf.ordersys.view;
+package pl.ordersys.view;
 
-import com.xf.ordersys.core.Engine;
-import com.xf.ordersys.core.Order;
+import pl.ordersys.core.Engine;
+import pl.ordersys.core.Order;
 
 /**
  * View class describes the menu of command line interfaces
