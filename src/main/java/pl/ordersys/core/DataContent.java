@@ -2,15 +2,18 @@ package pl.ordersys.core;
 
 
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import pl.ordersys.content.Cuisines;
 import pl.ordersys.content.Drinks;
 import pl.ordersys.content.OrderMenu;
-import pl.ordersys.exception.AppExp;
+import pl.ordersys.apprun.exception.AppExp;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import pl.ordersys.core.exception.ExcelFileNotFoundException;
+import pl.ordersys.core.exception.ExcelIoException;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,6 +30,7 @@ import java.util.LinkedList;
  *
  * @author Dawid Janik
  */
+@Slf4j
 @NoArgsConstructor
 public class DataContent {
 
@@ -43,24 +47,23 @@ public class DataContent {
      * @param path physical address of Excel file
      * @throws AppExp if file not exist or is damaged
      */
-    public static void getContent(String path) throws AppExp {
+    public static void getContent(String path) {
 
-        FileInputStream excelData; //data.xlsx
-        XSSFWorkbook workbook;
+        final FileInputStream excelData; //data.xlsx
+        final XSSFWorkbook workbook;
 
         try {
             excelData = new FileInputStream(new File(path)); //Place for address
             workbook = new XSSFWorkbook(excelData); //DataContent
             setLunchData(workbook);
             setDrinksData(workbook);
-            System.out.println("***Application Start Succefully***");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            throw new AppExp("File Not Found");
-        } // WriteSheet.xlsx
-        catch (IOException e) {
-            e.printStackTrace();
-            throw new AppExp("I/O Check file structure");
+            log.info("***Application Start Successfully***");
+        } catch (FileNotFoundException ex) {
+            log.debug("Excel file was not found");
+            throw new ExcelFileNotFoundException("File Not Found");
+        } catch (IOException ex) {
+            log.debug("I/O exception when processing the file");
+            throw new ExcelIoException("I/O error when accessing the file");
         }
     }
 
@@ -71,9 +74,9 @@ public class DataContent {
      * @throws IllegalStateException if data in Sheet(0) is invalid
      *                               e.g specific cell contains String value instead of numeric value.
      */
-    private static void setLunchData(XSSFWorkbook workbook) { //setLunchData
+    private static void setLunchData(XSSFWorkbook workbook) {
         try {
-            XSSFSheet spreadsheet = workbook.getSheetAt(0);            //Sheet(0)-Launch
+            XSSFSheet spreadsheet = workbook.getSheetAt(0); //Sheet(0)-Launch
             Iterator<Row> rowIterator = spreadsheet.iterator();
 
             while (rowIterator.hasNext()) {
@@ -83,7 +86,6 @@ public class DataContent {
 
                 Cuisines cs = new Cuisines();
                 while (cellIterator.hasNext()) {
-
                     Cell cell = cellIterator.next(); // Cell from Excel
 
                     if (cell.getColumnIndex() == 0) {
@@ -102,7 +104,8 @@ public class DataContent {
             showDataCuisines(cuisines);
 
         } catch (java.lang.IllegalStateException e) { //Invalid Format
-            System.err.println("Invalid Data in Excel Launch Cell");
+            log.debug("Invalid Data in Excel Launch Cell");
+            //todo throw exception here
         }
     }
 
@@ -141,18 +144,17 @@ public class DataContent {
             showDataDrinks(drinks);
 
         } catch (java.lang.IllegalStateException e) { //Invalid Format
-            System.err.println("Invalid Data in Excel Drinks Cell");
+            log.debug("Invalid Data in Excel Drinks Cell");
+            //todo throw ex
         }
     }
 
-    private static void showDataCuisines(LinkedList<Cuisines> list) {
-        System.out.println("list.size() = " + list.size());
-        list.forEach(System.out::println);
+    private static void showDataCuisines(LinkedList<Cuisines> cuisines) {
+        cuisines.forEach(System.out::println);
     }
 
-    private static void showDataDrinks(LinkedList<Drinks> list) {
-        System.out.println("list.size() = " + list.size());
-        list.forEach(System.out::println);
+    private static void showDataDrinks(LinkedList<Drinks> drinks) {
+        drinks.forEach(System.out::println);
     }
 
 }

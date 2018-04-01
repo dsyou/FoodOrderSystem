@@ -50,5 +50,4 @@ public class DrinkView {
         Engine.makeOrderView();
     }
 
-
 }

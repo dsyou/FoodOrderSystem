@@ -3,7 +3,6 @@ package pl.ordersys.apprun;
 
 import lombok.extern.slf4j.Slf4j;
 import pl.ordersys.core.DataContent;
-import pl.ordersys.exception.AppExp;
 import pl.ordersys.view.GeneralView;
 
 /**
@@ -17,7 +16,7 @@ import pl.ordersys.view.GeneralView;
 @Slf4j
 public class Main {
 
-    private static String path = "C://Food.xls";
+    private static String path = "./resources/Food.xls";
 
     /**
      * This is the main method that launches thread of Application,
@@ -27,16 +26,12 @@ public class Main {
      * @param args unused or used depends of method giving a initial path of Excel file.
      */
     public static void main(String[] args) {
-        try {
-            if (args.length == 0) {
-                path = args[0];
-            }
-            ThreadApp threadApp = new ThreadApp();
-            threadApp.start();
-            DataContent.getContent(path);
-            GeneralView.view();
-        } catch (AppExp appExp) {
-            appExp.printStackTrace();
+        if (args.length != 0) {
+            path = args[0];
         }
+        ThreadApp threadApp = new ThreadApp();
+        threadApp.start();
+        DataContent.getContent(path);
+        GeneralView.view();
     }
 }

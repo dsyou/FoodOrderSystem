@@ -17,7 +17,7 @@ public class CommonPurposeView {
 
     public static void view_SystemInfo() {
         System.out.println(" ============================== ");
-        System.out.println(" = Food Ordering System v.0.7 = ");
+        System.out.println(" = Food Ordering System v 0.8 = ");
         System.out.println(" ============================== ");
     }
 

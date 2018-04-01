@@ -1,6 +1,7 @@
 package pl.ordersys.apprun;
 
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import pl.ordersys.content.OrderMenu;
 import pl.ordersys.core.Order;
 
@@ -10,12 +11,12 @@ import pl.ordersys.core.Order;
  *
  * @author Dawid Janik
  */
+@Slf4j
 @NoArgsConstructor
 public class ThreadApp extends Thread {
 
     private OrderMenu orderMenu = OrderMenu.getInstace();
     private static Order order = Order.getInstance();
-    private boolean run;
 
     /**
      * In this method Thread is always running.
@@ -24,22 +25,22 @@ public class ThreadApp extends Thread {
      *
      * @return void
      */
+    @Override
     public void run() {
-        run = true;
-        while (run) {
-            if (orderMenu.userKey == 999) { //Best Backdoor Ever :)
-                System.err.println("Back Door Exit");
+        while (true) {
+            // Best Backdoor Ever :)
+            if (orderMenu.userKey == 9999) {
+                log.debug("Back Door Exit");
                 System.exit(0);
             }
-            if (orderMenu.userKey < 0 || orderMenu.userKey >= 1000) { // Allowed to take order amount form 1 to 998 items per one transaction
-                System.err.println("Invalid range expression of type");
+            if (orderMenu.userKey < 0 || orderMenu.userKey >= 1000) {
+                log.debug("Invalid range expression of type");
                 orderMenu.userKey = 0;
-                System.exit(-1);
             }
+            // Allowed to take order amount form 1 to 998 items per one transaction
             if (order.quantity < 0 || order.quantity >= 1000) {
+                log.debug("Invalid range expression of type");
                 order.quantity = 0;
-                System.err.println("Invalid range expression of type");
-                System.exit(-1);
             }
         }
     }

@@ -1,4 +1,4 @@
-package pl.ordersys.exception;
+package pl.ordersys.apprun.exception;
 
 /**
  * Signals that a method has been invoked at an illegal or
