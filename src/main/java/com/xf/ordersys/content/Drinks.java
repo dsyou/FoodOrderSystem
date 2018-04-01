@@ -5,14 +5,10 @@ package com.xf.ordersys.content;
  *
  * @author Dawid Janik
  */
-
 public class Drinks {
 
     private String name = "";
     private double price = 0;
-
-//===================================================================
-//
 
     public Drinks() {
     }
@@ -21,8 +17,7 @@ public class Drinks {
         this.price = price;
         this.name = name;
     }
-//===================================================================
-//
+
     public String getName() {
         return name;
     }
@@ -39,8 +34,6 @@ public class Drinks {
         this.price = price;
     }
 
-//===================================================================
-//
     @Override
     public String toString() {
         return "Drinks{" +

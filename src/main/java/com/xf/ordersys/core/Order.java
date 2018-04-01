@@ -12,15 +12,15 @@ import java.util.List;
  *
  * @author Dawid Janik
  */
-public  class Order {
+public class Order {
 
 
     private static Order instance;
 
-    private List<String>  namesOfOrderedItems;
-    private List<Double>  priceOfOrderedItems;
+    private List<String> namesOfOrderedItems;
+    private List<Double> priceOfOrderedItems;
 
-    private List<Double>  tmp; // Temporary Price List
+    private List<Double> tmp; // Temporary Price List
 
     public int quantity = 0;
     private Double totalAmount = 0.d;
@@ -28,17 +28,13 @@ public  class Order {
     private volatile Boolean lemon;
     private volatile Boolean ice;
 
-//===================================================================
-// Order()
-
-    public Order(){
+    public Order() {
         namesOfOrderedItems = new ArrayList<String>();
         priceOfOrderedItems = new ArrayList<Double>();
         lemon = false;
         ice = false;
         tmp = new ArrayList<Double>();
     }
-
 
     public Order(ArrayList<String> namesOfOrderedItems, ArrayList<Double> totalPrice) {
         this.namesOfOrderedItems = namesOfOrderedItems;
@@ -49,15 +45,12 @@ public  class Order {
      * If the order has been executed
      * List of orderedItems and price should be overwritten
      */
-    public  void dropOrder(){
+    public void dropOrder() {
         this.namesOfOrderedItems = new ArrayList<String>(); //.forEach(s ->s = "");
         this.priceOfOrderedItems = new ArrayList<Double>();//.forEach(i ->i =0.d);
         quantity = 0;
         totalAmount = 0.d;
     }
-
-//=================================================================================================================
-//Method Singleton
 
     public static Order getInstace() {
 
@@ -69,10 +62,6 @@ public  class Order {
         return instance;
     }
 
-
-//===================================================================
-// Order()
-
     public void totalAmount() {
         Double t = 0.d;
         for (Double l : tmp) { //priceOfOrderedItems
@@ -83,8 +72,7 @@ public  class Order {
         tmp = new ArrayList<Double>(); //Tmp list is clearing here
 
     }
-//===================================================================
-// Getter / Setter()
+
     public List<String> getNamesOfOrderedItems() {
         return namesOfOrderedItems;
     }
@@ -124,8 +112,6 @@ public  class Order {
     public void setIce(Boolean ice) {
         this.ice = ice;
     }
-//===================================================================
-// toString()
 
     @Override
     public String toString() {
@@ -137,4 +123,4 @@ public  class Order {
                 '}';
     }
 
-}// End of Order
+}

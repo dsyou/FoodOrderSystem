@@ -12,7 +12,7 @@ import com.xf.ordersys.view.GeneralView;
  * describe in readme.md file.
  *
  * @author Dawid Janik
-  */
+ */
 public class Main {
 
     public static String path = "";
@@ -27,9 +27,9 @@ public class Main {
      */
     public static void main(String[] args) throws Exception {
 
-        if(args.length == 0 ){
+        if (args.length == 0) {
             path = "C://Food.xlsx"; // Default path
-        }else{
+        } else {
             path = args[0];
         }
         ThreadApp t = new ThreadApp();
@@ -44,6 +44,4 @@ public class Main {
 
     }
 
-
-
-} // End of Main Class
+}

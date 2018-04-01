@@ -5,16 +5,13 @@ package com.xf.ordersys.content;
  *
  * @author Dawid Janik
  */
-public  class Cuisines {
+public class Cuisines {
 
     private String nameCuisines = "";
     private String nameMainCourse = "";
     private String nameDessert = "";
 
     private Double price;
-
- //===================================================================
- //
 
     public Cuisines() {
         super();
@@ -24,9 +21,6 @@ public  class Cuisines {
         this.nameCuisines = name;
         this.price = price;
     }
-
-//===================================================================
-//
 
     public String getName() {
         return nameCuisines;
@@ -60,8 +54,6 @@ public  class Cuisines {
         this.nameDessert = nameDessert;
     }
 
-//===================================================================
-//
     @Override
     public String toString() {
         return "Cuisines{" +
@@ -72,6 +64,4 @@ public  class Cuisines {
                 '}';
     }
 
-
-
-}// End of Cuisines
+}

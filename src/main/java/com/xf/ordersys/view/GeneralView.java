@@ -13,7 +13,6 @@ import com.xf.ordersys.core.Engine;
  */
 public class GeneralView {
 
-
     public static void view(){
 
         CommonPurposeView.view_SystemInfo();

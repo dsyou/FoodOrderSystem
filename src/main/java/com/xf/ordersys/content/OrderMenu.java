@@ -11,7 +11,6 @@ import java.util.LinkedList;
  */
 public class OrderMenu {
 
-
     private static OrderMenu instance = null;
 
     private LinkedList<Cuisines> arrayOfCuisine = null; // List of Cuisine
@@ -21,9 +20,6 @@ public class OrderMenu {
     public int t = 0;
 
     private boolean menu_check;
-
-//=================================================================================================================
-//Getter and Setter
 
     public static OrderMenu getInstance() {
         return instance;
@@ -56,8 +52,6 @@ public class OrderMenu {
     public boolean isMenu_check() {
         return menu_check;
     }
-//=================================================================================================================
-//Method Singleton
 
     public static OrderMenu getInstace(){
 
@@ -69,10 +63,4 @@ public class OrderMenu {
         return instance;
     }
 
-//=================================================================================================================
-//Another Methods
-
-
-
-
-} // end of OrderMenu
+}

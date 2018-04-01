@@ -31,11 +31,8 @@ public class DataContent {
    static XSSFRow row;  // XML SpreadSheet Format
    private static OrderMenu menu = OrderMenu.getInstace();
 
-    private static LinkedList<Cuisines> list_L = new LinkedList<Cuisines>();
-    private static LinkedList<Drinks> list_D = new LinkedList<Drinks>();
-
-//===================================================================
-//GET CONTENT FROM EXCEL DataBase
+    private static LinkedList<Cuisines> list_L = new LinkedList<>();
+    private static LinkedList<Drinks> list_D = new LinkedList<>();
 
     /**
      * IMPORTANT XSSFWorkbook support .xlsx Excel file (2007 and newest)
@@ -62,7 +59,6 @@ public class DataContent {
             }
 
         }
-
 
     /**
      * This method is used to update Lunch menu content List with Sheet(0)-Launch
@@ -164,10 +160,6 @@ public class DataContent {
 
   }
 
-
-//===================================================================
-//Others method's
-
     private static void showData_CuisinesList(LinkedList<Cuisines> list){
         System.out.println("list.size() = " + list.size());
         list.forEach(System.out::println);
@@ -178,5 +170,4 @@ public class DataContent {
         list.forEach(System.out::println);
     }
 
-
-} //End of DataContent
+}

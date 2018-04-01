@@ -7,7 +7,7 @@ import com.xf.ordersys.core.Order;
  * View class describes the menu of command line interfaces
  * Each position contains numeric values responsible to
  * specific action assigned to this value (e.g 0. Cancel action)
- *
+ * <p>
  * This class responds to sout Manage order content:
  *
  * @author Dawid Janik
@@ -15,9 +15,6 @@ import com.xf.ordersys.core.Order;
 public class ManageOrderView {
 
     private static Order order = Order.getInstace();
-
-//=================================================================================================================
-// Methods
 
     public ManageOrderView() {
     }
@@ -31,9 +28,6 @@ public class ManageOrderView {
         System.out.println(" 0.Cancel");
 
         Engine.makeAction_manageView();
-
-
-
     }
 
     /**
@@ -44,12 +38,12 @@ public class ManageOrderView {
         CommonPurposeView.view_SystemInfo();
 
         //List must have the same size()
-        if (order.getNamesOfOrderedItems().size() != order.getPriceOfOrderedItems().size()){
+        if (order.getNamesOfOrderedItems().size() != order.getPriceOfOrderedItems().size()) {
             System.err.println("Oops order List are not equal");
             System.exit(-1);
-        }else{
+        } else {
             for (int i = 0; i < order.getNamesOfOrderedItems().size(); i++) {
-               System.out.println((i+1)+ "." + "  Name: " + order.getNamesOfOrderedItems().get(i) + " Price: " + order.getPriceOfOrderedItems().get(i) + "$");
+                System.out.println((i + 1) + "." + "  Name: " + order.getNamesOfOrderedItems().get(i) + " Price: " + order.getPriceOfOrderedItems().get(i) + "$");
             }
         }
         CommonPurposeView.totalAmount();

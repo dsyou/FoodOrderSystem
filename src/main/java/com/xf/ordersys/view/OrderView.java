@@ -6,16 +6,12 @@ import com.xf.ordersys.core.Engine;
  * View class describes the menu of command line interfaces
  * Each position contains numeric values responsible to
  * specific action assigned to this value (e.g 0. Cancel action)
- *
+ * <p>
  * This class responds to sout order content (quantity, extra option).
  *
- * @author  Dawid Janik
+ * @author Dawid Janik
  */
 public class OrderView {
-
-
-//=================================================================================================================
-//
 
     public static void orderLaunch_View() {
 
@@ -44,7 +40,7 @@ public class OrderView {
         Engine.makeActionDrink_Order();
     }
 
-    public static void quantity_View(){
+    public static void quantity_View() {
 
         CommonPurposeView.view_SystemInfo();
         System.out.print(" Quantity: "); // Here take quantity
@@ -53,6 +49,5 @@ public class OrderView {
 
         Engine.makeQuantity_Add();
     }
-
 
 }

@@ -21,11 +21,6 @@ public class DrinkView {
 
     private static OrderMenu o = OrderMenu.getInstace();
 
-//=================================================================================================================
-// Methods
-
-
-
     public static void view(){
 
         CommonPurposeView.view_SystemInfo();
@@ -39,8 +34,6 @@ public class DrinkView {
 
         Engine.makeAction_drinkView();
     }
-
-
 
     //ice cubes or/and lemon
     public static void view_DrinksContent() {
@@ -58,6 +51,4 @@ public class DrinkView {
     }
 
 
-
-
-} // End of DrinkView
+}

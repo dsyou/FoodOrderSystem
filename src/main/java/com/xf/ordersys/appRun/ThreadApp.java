@@ -8,7 +8,7 @@ import com.xf.ordersys.core.Order;
  * for listing to incorrect user action taken from command line interfaces.
  *
  * @author Dawid Janik
-  */
+ */
 public class ThreadApp extends Thread {
 
     private OrderMenu o = OrderMenu.getInstace();
@@ -18,10 +18,6 @@ public class ThreadApp extends Thread {
     public ThreadApp() {
         super();
     }
-
-
-//===================================================================
-//run()
 
     /**
      * In this method Thread is always running.
@@ -51,8 +47,6 @@ public class ThreadApp extends Thread {
             }
 
         }
-
-
     }
 
-}// End of Thread Class
+}

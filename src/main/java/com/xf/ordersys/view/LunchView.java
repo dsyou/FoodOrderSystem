@@ -20,10 +20,6 @@ public class LunchView {
 
     private static OrderMenu o = OrderMenu.getInstace();
 
-
-//=================================================================================================================
-// Methods
-
     public static void view() {
 
         CommonPurposeView.view_SystemInfo();
@@ -36,7 +32,6 @@ public class LunchView {
         CommonPurposeView.backToTop();
 
         Engine.makeAction_launchView();
-
     }
 
     public static void view_CuisinesContent() {
@@ -53,6 +48,5 @@ public class LunchView {
         Engine.makeOrder_View();
     }
 
-
-}// End of LunchView
+}
 

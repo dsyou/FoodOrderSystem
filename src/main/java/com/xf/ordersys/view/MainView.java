@@ -17,7 +17,6 @@ public class MainView {
         super();
     }
 
-    //
     public static void view(){
 
         CommonPurposeView.view_SystemInfo();
@@ -31,8 +30,5 @@ public class MainView {
 
         Engine.makeAction_mainView();
     }
-
-
-
 
 }

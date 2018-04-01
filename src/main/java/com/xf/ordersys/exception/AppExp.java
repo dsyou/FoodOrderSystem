@@ -4,16 +4,11 @@ package com.xf.ordersys.exception;
  * Signals that a method has been invoked at an illegal or
  * inappropriate time.
  * This class is used to future purpose (e.g define specific way to shutdown application
- *  or save current order state).
- *
+ * or save current order state).
  *
  * @author Dawid Janik
  */
-public class AppExp extends Exception{
-
-
-//===================================================================
-//Constructs()
+public class AppExp extends Exception {
 
     /**
      * Constructs an AppExp with the specified detail message.
@@ -29,6 +24,5 @@ public class AppExp extends Exception{
     public AppExp(String message, Throwable cause) {
         super(message, cause);
     }
-
 
 }
