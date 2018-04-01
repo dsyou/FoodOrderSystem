@@ -14,7 +14,7 @@ import pl.ordersys.core.Order;
  */
 public class PaymentView {
 
-    private static Order order = Order.getInstace();
+    private static Order order = Order.getInstance();
 
     public static void view() {
 

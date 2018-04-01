@@ -19,7 +19,7 @@ public class OrderMenu {
     public volatile int userKey = 0;
     public int t = 0;
 
-    private boolean menu_check;
+    private boolean menuCheck;
 
     public static OrderMenu getInstance() {
         return instance;
@@ -45,20 +45,17 @@ public class OrderMenu {
         this.arrayOfDrinks = arrayOfDrinks;
     }
 
-    public void setMenu_check(boolean menu_check) {
-        this.menu_check = menu_check;
+    public void setMenuCheck(boolean menuCheck) {
+        this.menuCheck = menuCheck;
     }
 
-    public boolean isMenu_check() {
-        return menu_check;
+    public boolean isMenuCheck() {
+        return menuCheck;
     }
 
     public static OrderMenu getInstace(){
-
         if (instance==null){
-
             instance= new OrderMenu();
-
         }
         return instance;
     }

@@ -1,5 +1,6 @@
 package pl.ordersys.view;
 
+import lombok.NoArgsConstructor;
 import pl.ordersys.core.Engine;
 import pl.ordersys.core.Order;
 
@@ -12,12 +13,10 @@ import pl.ordersys.core.Order;
  *
  * @author Dawid Janik
  */
+@NoArgsConstructor
 public class ManageOrderView {
 
-    private static Order order = Order.getInstace();
-
-    public ManageOrderView() {
-    }
+    private static Order order = Order.getInstance();
 
     public static void view() {
 

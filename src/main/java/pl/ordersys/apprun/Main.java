@@ -1,4 +1,4 @@
-package pl.ordersys.appRun;
+package pl.ordersys.apprun;
 
 
 import pl.ordersys.core.DataContent;
@@ -36,7 +36,8 @@ public class Main {
         t.start();
 
         try {
-            DataContent.getContent(path); // Place of  path take from args  //"C://Food.xlsx" or not
+            DataContent.getContent(path);
+            // Place of  path take from args  //"C://Food.xlsx" or not
         } catch (AppExp appExp) {
             appExp.printStackTrace();
         }

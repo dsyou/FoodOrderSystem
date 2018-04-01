@@ -1,5 +1,6 @@
 package pl.ordersys.core;
 
+import lombok.NoArgsConstructor;
 import pl.ordersys.content.OrderMenu;
 import pl.ordersys.view.*;
 
@@ -15,16 +16,11 @@ import java.io.InputStreamReader;
  *
  * @author Dawid Janik
  */
+@NoArgsConstructor
 public class Engine {
 
-
-    private static OrderMenu o = OrderMenu.getInstace();
-    private static Order order = Order.getInstace();
-
-
-    public Engine() {
-        super();
-    }
+    private static OrderMenu orderMenu = OrderMenu.getInstace();
+    private static Order order = Order.getInstance();
 
     /**
      * This kind of methods are used to get user choice from
@@ -40,7 +36,7 @@ public class Engine {
         System.out.print("Your Choice...");
 
         try {
-            o.userKey = Integer.parseInt(br.readLine());
+            orderMenu.userKey = Integer.parseInt(br.readLine());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -60,7 +56,6 @@ public class Engine {
             e.printStackTrace();
         }
         System.out.println("********************************");
-
     }
 
     /**
@@ -72,11 +67,11 @@ public class Engine {
 
         Engine.getUserAction(); // Wait for key
 
-        if (o.userKey == 999 || o.userKey == 3) { //999
+        if (orderMenu.userKey == 999 || orderMenu.userKey == 3) { //999
             System.exit(0); // Close app with 0 exit code
-        } else if (o.userKey == 1) {
+        } else if (orderMenu.userKey == 1) {
             MainView.view();
-        } else if (o.userKey == 2) {
+        } else if (orderMenu.userKey == 2) {
             PaymentView.view();
         }
     }
@@ -85,20 +80,20 @@ public class Engine {
 
         Engine.getUserAction(); // Wait for key
 
-        if (o.userKey == 999) { //999
+        if (orderMenu.userKey == 999) { //999
             System.exit(0);
         } else {
-            switch (o.userKey) {
+            switch (orderMenu.userKey) {
 
                 case 1: //Lunch
-                    o.setMenu_check(true);
-                    // System.out.println("o.menu_check " + o.menu_check);
+                    orderMenu.setMenuCheck(true);
+                    // System.out.println("orderMenu.menu_check " + orderMenu.menu_check);
                     LunchView.view();
                     // Engine.actionLunch(Engine.getUserAction());
                     break;
                 case 2: //Drink's
-                    o.setMenu_check(false);
-                    // System.out.println("o.menu_check " + o.menu_check);
+                    orderMenu.setMenuCheck(false);
+                    // System.out.println("orderMenu.menu_check " + orderMenu.menu_check);
                     DrinkView.view();
                     //   Engine.actionDrinks(Engine.getUserAction());
                     break;
@@ -120,12 +115,12 @@ public class Engine {
     public static void makeAction_manageView() {
         Engine.getUserAction(); // Wait for key
 
-        if (o.userKey == 1) { //Show order option
+        if (orderMenu.userKey == 1) { //Show order option
             ManageOrderView.view_show();
-        } else if (o.userKey == 5) { // Forgot all in order
+        } else if (orderMenu.userKey == 5) { // Forgot all in order
             order.dropOrder();
             MainView.view();
-        } else if (o.userKey == 0) { // Cancel back option
+        } else if (orderMenu.userKey == 0) { // Cancel back option
             MainView.view();
         }
     }
@@ -133,7 +128,7 @@ public class Engine {
     public static void makeAction_showView() {
         Engine.getUserAction(); // Wait for key
 
-        if (o.userKey == 0) { // Cancel or back option
+        if (orderMenu.userKey == 0) { // Cancel or back option
             MainView.view();
         }
     }
@@ -142,7 +137,7 @@ public class Engine {
         Engine.getUserAction(); // Wait for key
 
         order.dropOrder();
-        if (o.userKey == 0) { // Cancel or back option
+        if (orderMenu.userKey == 0) { // Cancel or back option
             GeneralView.view();
         }
     }
@@ -150,7 +145,7 @@ public class Engine {
     public static void makeAction_showTransactionStatus_Error() {
         Engine.getUserAction(); // Wait for key
 
-        if (o.userKey == 0) { // Cancel or back option
+        if (orderMenu.userKey == 0) { // Cancel or back option
             GeneralView.view();
         }
     }
@@ -159,12 +154,12 @@ public class Engine {
 
         Engine.getUserAction(); // Wait for key
 
-        if (o.userKey == 0) { //999
+        if (orderMenu.userKey == 0) { //999
             MainView.view();
         } else {
-            //o.getArrayOfCuisine().get(o.userKey -1);//
-            o.t = o.userKey - 1;
-            System.out.println("User key t " + (o.t));
+            //orderMenu.getArrayOfCuisine().get(orderMenu.userKey -1);//
+            orderMenu.t = orderMenu.userKey - 1;
+            System.out.println("User key t " + (orderMenu.t));
             LunchView.view_CuisinesContent();
 
         }
@@ -174,24 +169,24 @@ public class Engine {
 
         Engine.getUserAction(); // Wait for key
 
-        if (o.userKey == 0) { //999
+        if (orderMenu.userKey == 0) { //999
             MainView.view();
         } else {
-            o.t = o.userKey - 1;
-            System.out.println("User key t- Drinks  " + (o.t));
+            orderMenu.t = orderMenu.userKey - 1;
+            System.out.println("User key t- Drinks  " + (orderMenu.t));
             DrinkView.view_DrinksContent();
         }
     }
     public static void makeOrder_View() {
         Engine.getUserAction();
 
-        if (o.userKey == 0) { //Cancel
-            MainView.view(); //Or maybe LunchView.orderLaunch_View();
+        if (orderMenu.userKey == 0) { //Cancel
+            MainView.view(); //Or maybe LunchView.orderLaunchView();
         }
-        if (o.isMenu_check()) { // True Launch bool flags
-            OrderView.orderLaunch_View();
+        if (orderMenu.isMenuCheck()) { // True Launch bool flags
+            OrderView.orderLaunchView();
         } else { // False Drinks
-            OrderView.orderDrink_View();
+            OrderView.orderDrinkView();
         }
     }
 
@@ -199,10 +194,10 @@ public class Engine {
 
         Engine.getUserAction(); // Wait for key
 
-        if (o.userKey == 0) { //Cancel
-            MainView.view(); //Or maybe LunchView.orderLaunch_View();
-        } else if (o.userKey == 1) { //Quantity + add this item into order list
-            OrderView.quantity_View();
+        if (orderMenu.userKey == 0) { //Cancel
+            MainView.view(); //Or maybe LunchView.orderLaunchView();
+        } else if (orderMenu.userKey == 1) { //Quantity + add this item into order list
+            OrderView.quantityView();
         }
 
     }
@@ -211,7 +206,7 @@ public class Engine {
 
         Engine.getUserAction(); // Wait for key
 
-        switch (o.userKey) {
+        switch (orderMenu.userKey) {
 
             case 0:
                 MainView.view();
@@ -219,27 +214,26 @@ public class Engine {
             case 1:
                 order.setIce(false);
                 order.setLemon(false);
-                OrderView.quantity_View();
+                OrderView.quantityView();
                 break;
             case 2:
                 // Change Order name + Lemon
                 order.setIce(false);
                 order.setLemon(true);
-                OrderView.quantity_View();
+                OrderView.quantityView();
                 break;
             case 3:
                 // Change Order name + Ice
                 order.setIce(true);
                 order.setLemon(false);
-                OrderView.quantity_View();
+                OrderView.quantityView();
                 break;
             case 4:
                 // Change Order name Lemon + Ice
                 order.setIce(true);
                 order.setLemon(true);
-                OrderView.quantity_View();
+                OrderView.quantityView();
                 break;
-
             default:
                 System.err.println("");
                 GeneralView.view();
@@ -256,39 +250,39 @@ public class Engine {
             order.quantity = -1; //back...
             GeneralView.view();
         } else {
-            //System.out.println("User key t " + (o.t));
+            //System.out.println("User key t " + (orderMenu.t));
             for (int i = 0; i < order.quantity; i++) {
 
-                if (o.isMenu_check()) {
-                    order.getPriceOfOrderedItems().add(o.getArrayOfCuisine().get(o.t).getPrice());
-                    order.getTmp().add(o.getArrayOfCuisine().get(o.t).getPrice());
-                    order.getNamesOfOrderedItems().add(o.getArrayOfCuisine().get(o.t).getNameMainCourse() + " " + o.getArrayOfCuisine().get(o.t).getNameDessert());  //zamowienie
+                if (orderMenu.isMenuCheck()) {
+                    order.getPriceOfOrderedItems().add(orderMenu.getArrayOfCuisine().get(orderMenu.t).getPrice());
+                    order.getTmp().add(orderMenu.getArrayOfCuisine().get(orderMenu.t).getPrice());
+                    order.getNamesOfOrderedItems().add(orderMenu.getArrayOfCuisine().get(orderMenu.t).getNameMainCourse() + " " + orderMenu.getArrayOfCuisine().get(orderMenu.t).getNameDessert());  //zamowienie
                 } else {
                     if (!order.getLemon() && !order.getIce()) {
                         // without Limom and ice
-                        order.getPriceOfOrderedItems().add(o.getArrayOfDrinks().get(o.t).getPrice());
-                        order.getTmp().add(o.getArrayOfDrinks().get(o.t).getPrice());
-                        order.getNamesOfOrderedItems().add(o.getArrayOfDrinks().get(o.t).getName());
+                        order.getPriceOfOrderedItems().add(orderMenu.getArrayOfDrinks().get(orderMenu.t).getPrice());
+                        order.getTmp().add(orderMenu.getArrayOfDrinks().get(orderMenu.t).getPrice());
+                        order.getNamesOfOrderedItems().add(orderMenu.getArrayOfDrinks().get(orderMenu.t).getName());
                     } else if (!order.getLemon() && order.getIce()) {
                         // with limon, but without ice
-                        order.getPriceOfOrderedItems().add(o.getArrayOfDrinks().get(o.t).getPrice());
-                        order.getTmp().add(o.getArrayOfDrinks().get(o.t).getPrice());
-                        order.getNamesOfOrderedItems().add(o.getArrayOfDrinks().get(o.t).getName() + " Ice");
+                        order.getPriceOfOrderedItems().add(orderMenu.getArrayOfDrinks().get(orderMenu.t).getPrice());
+                        order.getTmp().add(orderMenu.getArrayOfDrinks().get(orderMenu.t).getPrice());
+                        order.getNamesOfOrderedItems().add(orderMenu.getArrayOfDrinks().get(orderMenu.t).getName() + " Ice");
                     } else if (order.getLemon() && !order.getIce()) {
                         // with ice, without limon
-                        order.getPriceOfOrderedItems().add(o.getArrayOfDrinks().get(o.t).getPrice());
-                        order.getTmp().add(o.getArrayOfDrinks().get(o.t).getPrice());
-                        order.getNamesOfOrderedItems().add(o.getArrayOfDrinks().get(o.t).getName() + " Lemon");
+                        order.getPriceOfOrderedItems().add(orderMenu.getArrayOfDrinks().get(orderMenu.t).getPrice());
+                        order.getTmp().add(orderMenu.getArrayOfDrinks().get(orderMenu.t).getPrice());
+                        order.getNamesOfOrderedItems().add(orderMenu.getArrayOfDrinks().get(orderMenu.t).getName() + " Lemon");
                     } else if (order.getLemon() && order.getIce()) {
                         // with limon and ice
-                        order.getPriceOfOrderedItems().add(o.getArrayOfDrinks().get(o.t).getPrice());
-                        order.getTmp().add(o.getArrayOfDrinks().get(o.t).getPrice());
-                        order.getNamesOfOrderedItems().add(o.getArrayOfDrinks().get(o.t).getName() + " Lemon + Ice");
+                        order.getPriceOfOrderedItems().add(orderMenu.getArrayOfDrinks().get(orderMenu.t).getPrice());
+                        order.getTmp().add(orderMenu.getArrayOfDrinks().get(orderMenu.t).getPrice());
+                        order.getNamesOfOrderedItems().add(orderMenu.getArrayOfDrinks().get(orderMenu.t).getName() + " Lemon + Ice");
                     }
 //
-//                    order.getPriceOfOrderedItems().add( o.getArrayOfDrinks().get(o.t).getPrice() );
-//                    order.getTmp().add( o.getArrayOfDrinks().get(o.t).getPrice() );
-//                    order.getNamesOfOrderedItems().add( o.getArrayOfDrinks().get(o.t).getName() );
+//                    order.getPriceOfOrderedItems().add( orderMenu.getArrayOfDrinks().get(orderMenu.t).getPrice() );
+//                    order.getTmp().add( orderMenu.getArrayOfDrinks().get(orderMenu.t).getPrice() );
+//                    order.getNamesOfOrderedItems().add( orderMenu.getArrayOfDrinks().get(orderMenu.t).getName() );
                 }
 
             }

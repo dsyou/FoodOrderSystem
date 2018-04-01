@@ -18,14 +18,14 @@ public class LunchView {
         super();
     } //
 
-    private static OrderMenu o = OrderMenu.getInstace();
+    private static OrderMenu orderMenu = OrderMenu.getInstace();
 
     public static void view() {
 
         CommonPurposeView.view_SystemInfo();
 
-        for (int i = 0; i < o.getArrayOfCuisine().size(); i++) {
-            System.out.println("" + (i + 1) + "." + o.getArrayOfCuisine().get(i).getName());
+        for (int i = 0; i < orderMenu.getArrayOfCuisine().size(); i++) {
+            System.out.println("" + (i + 1) + "." + orderMenu.getArrayOfCuisine().get(i).getNameCuisines());
         }
 
         CommonPurposeView.totalAmount();
@@ -38,9 +38,9 @@ public class LunchView {
 
         CommonPurposeView.view_SystemInfo();
 
-        System.out.println("Main course: " + o.getArrayOfCuisine().get(o.userKey - 1 ).getNameMainCourse());
-        System.out.println("Dessert: " + o.getArrayOfCuisine().get(o.userKey  - 1 ).getNameDessert());
-        System.out.println("Price:" + o.getArrayOfCuisine().get(o.userKey - 1).getPrice());
+        System.out.println("Main course: " + orderMenu.getArrayOfCuisine().get(orderMenu.userKey - 1 ).getNameMainCourse());
+        System.out.println("Dessert: " + orderMenu.getArrayOfCuisine().get(orderMenu.userKey  - 1 ).getNameDessert());
+        System.out.println("Price:" + orderMenu.getArrayOfCuisine().get(orderMenu.userKey - 1).getPrice());
         System.out.println();
         System.out.println("5.Order");
 

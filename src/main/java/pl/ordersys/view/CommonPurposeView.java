@@ -13,7 +13,7 @@ import pl.ordersys.core.Order;
  */
 public class CommonPurposeView {
 
-    private static Order order = Order.getInstace();
+    private static Order order = Order.getInstance();
 
     public static void view_SystemInfo() {
         System.out.println(" ============================== ");
@@ -26,7 +26,7 @@ public class CommonPurposeView {
     }
 
     public static void backToTop() {
-        System.out.println("");
+        System.out.println();
         System.out.println("0. Back to Top");
     }
 

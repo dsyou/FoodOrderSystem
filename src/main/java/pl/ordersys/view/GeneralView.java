@@ -14,7 +14,6 @@ import pl.ordersys.core.Engine;
 public class GeneralView {
 
     public static void view(){
-
         CommonPurposeView.view_SystemInfo();
 
         System.out.println(" 1. Make Order" );
@@ -23,7 +22,6 @@ public class GeneralView {
         System.out.println(" 3. Exit");
 
         Engine.makeAction_globalView();
-
     }
 
 }

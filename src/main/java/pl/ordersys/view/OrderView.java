@@ -13,8 +13,7 @@ import pl.ordersys.core.Engine;
  */
 public class OrderView {
 
-    public static void orderLaunch_View() {
-
+    public static void orderLaunchView() {
         CommonPurposeView.view_SystemInfo();
 
         System.out.println(" 1.Quantity ");
@@ -25,8 +24,7 @@ public class OrderView {
         Engine.makeActionLaunch_Order();
     }
 
-    public static void orderDrink_View() {
-
+    public static void orderDrinkView() {
         CommonPurposeView.view_SystemInfo();
 
         System.out.println(" 1.Quantity ");
@@ -40,8 +38,7 @@ public class OrderView {
         Engine.makeActionDrink_Order();
     }
 
-    public static void quantity_View() {
-
+    public static void quantityView() {
         CommonPurposeView.view_SystemInfo();
         System.out.print(" Quantity: "); // Here take quantity
         System.out.println();

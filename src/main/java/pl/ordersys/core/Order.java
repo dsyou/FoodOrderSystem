@@ -1,6 +1,8 @@
 package pl.ordersys.core;
 
 
+import lombok.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +14,12 @@ import java.util.List;
  *
  * @author Dawid Janik
  */
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
+@NoArgsConstructor
 public class Order {
-
 
     private static Order instance;
 
@@ -28,36 +34,20 @@ public class Order {
     private volatile Boolean lemon;
     private volatile Boolean ice;
 
-    public Order() {
-        namesOfOrderedItems = new ArrayList<String>();
-        priceOfOrderedItems = new ArrayList<Double>();
-        lemon = false;
-        ice = false;
-        tmp = new ArrayList<Double>();
-    }
-
-    public Order(ArrayList<String> namesOfOrderedItems, ArrayList<Double> totalPrice) {
-        this.namesOfOrderedItems = namesOfOrderedItems;
-        this.priceOfOrderedItems = totalPrice;
-    }
-
     /**
      * If the order has been executed
      * List of orderedItems and price should be overwritten
      */
     public void dropOrder() {
-        this.namesOfOrderedItems = new ArrayList<String>(); //.forEach(s ->s = "");
-        this.priceOfOrderedItems = new ArrayList<Double>();//.forEach(i ->i =0.d);
-        quantity = 0;
-        totalAmount = 0.d;
+        this.namesOfOrderedItems = new ArrayList<>(); //.forEach(s ->s = "");
+        this.priceOfOrderedItems = new ArrayList<>();//.forEach(i ->i =0.d);
+        this.quantity = 0;
+        this.totalAmount = 0.d;
     }
 
-    public static Order getInstace() {
-
+    public static Order getInstance() {
         if (instance == null) {
-
             instance = new Order();
-
         }
         return instance;
     }
@@ -69,58 +59,7 @@ public class Order {
         }
         this.totalAmount += t;
         System.out.println(this.totalAmount);
-        tmp = new ArrayList<Double>(); //Tmp list is clearing here
-
-    }
-
-    public List<String> getNamesOfOrderedItems() {
-        return namesOfOrderedItems;
-    }
-
-    public void setNamesOfOrderedItems(List<String> namesOfOrderedItems) {
-        this.namesOfOrderedItems = namesOfOrderedItems;
-    }
-
-    public List<Double> getPriceOfOrderedItems() {
-        return priceOfOrderedItems;
-    }
-
-    public void setPriceOfOrderedItems(List<Double> priceOfOrderedItems) {
-        this.priceOfOrderedItems = priceOfOrderedItems;
-    }
-
-    public Double getTotalAmount() {
-        return totalAmount;
-    }
-
-    public List<Double> getTmp() {
-        return tmp;
-    }
-
-    public Boolean getLemon() {
-        return lemon;
-    }
-
-    public void setLemon(Boolean lemon) {
-        this.lemon = lemon;
-    }
-
-    public Boolean getIce() {
-        return ice;
-    }
-
-    public void setIce(Boolean ice) {
-        this.ice = ice;
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "namesOfOrderedItems=" + namesOfOrderedItems +
-                ", priceOfOrderedItems=" + priceOfOrderedItems +
-                ", quantity=" + quantity +
-                ", totalAmount=" + totalAmount +
-                '}';
+        tmp = new ArrayList<>(); //Tmp list is clearing here
     }
 
 }
