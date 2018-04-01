@@ -1,12 +1,11 @@
 package pl.ordersys.apprun;
 
 import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import pl.ordersys.content.OrderMenu;
 import pl.ordersys.core.Order;
 
 /**
- * This class contain an implementation of Thread which is used
+ * Contain an implementation of Thread which is used
  * for listing to incorrect user action taken from command line interfaces.
  *
  * @author Dawid Janik

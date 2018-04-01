@@ -32,7 +32,7 @@ public class DrinkView {
         CommonPurposeView.totalAmount();
         CommonPurposeView.backToTop();
 
-        Engine.makeAction_drinkView();
+        Engine.makeActionDrinkView();
     }
 
     //ice cubes or/and lemon
@@ -47,7 +47,7 @@ public class DrinkView {
         System.out.println("5.Order");
 
         CommonPurposeView.backToTop();
-        Engine.makeOrder_View();
+        Engine.makeOrderView();
     }
 
 

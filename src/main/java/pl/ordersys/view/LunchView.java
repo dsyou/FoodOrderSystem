@@ -31,7 +31,7 @@ public class LunchView {
         CommonPurposeView.totalAmount();
         CommonPurposeView.backToTop();
 
-        Engine.makeAction_launchView();
+        Engine.makeActionLaunchView();
     }
 
     public static void view_CuisinesContent() {
@@ -45,7 +45,7 @@ public class LunchView {
         System.out.println("5.Order");
 
         CommonPurposeView.backToTop();
-        Engine.makeOrder_View();
+        Engine.makeOrderView();
     }
 
 }

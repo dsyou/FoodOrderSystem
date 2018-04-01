@@ -1,6 +1,7 @@
 package pl.ordersys.apprun;
 
 
+import lombok.extern.slf4j.Slf4j;
 import pl.ordersys.core.DataContent;
 import pl.ordersys.exception.AppExp;
 import pl.ordersys.view.GeneralView;
@@ -13,9 +14,10 @@ import pl.ordersys.view.GeneralView;
  *
  * @author Dawid Janik
  */
+@Slf4j
 public class Main {
 
-    public static String path = "";
+    private static String path = "C://Food.xls";
 
     /**
      * This is the main method that launches thread of Application,
@@ -23,26 +25,18 @@ public class Main {
      * After successful operation this method launch General View of command-line interface.
      *
      * @param args unused or used depends of method giving a initial path of Excel file.
-     * @throws Exception I/0 exception
      */
-    public static void main(String[] args) throws Exception {
-
-        if (args.length == 0) {
-            path = "C://Food.xlsx"; // Default path
-        } else {
-            path = args[0];
-        }
-        ThreadApp t = new ThreadApp();
-        t.start();
-
+    public static void main(String[] args) {
         try {
+            if (args.length == 0) {
+                path = args[0];
+            }
+            ThreadApp threadApp = new ThreadApp();
+            threadApp.start();
             DataContent.getContent(path);
-            // Place of  path take from args  //"C://Food.xlsx" or not
+            GeneralView.view();
         } catch (AppExp appExp) {
             appExp.printStackTrace();
         }
-        GeneralView.view();
-
     }
-
 }

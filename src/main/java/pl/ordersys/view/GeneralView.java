@@ -21,7 +21,7 @@ public class GeneralView {
         System.out.println();
         System.out.println(" 3. Exit");
 
-        Engine.makeAction_globalView();
+        Engine.makeActionGlobalView();
     }
 
 }

@@ -26,7 +26,7 @@ public class ManageOrderView {
         System.out.println();
         System.out.println(" 0.Cancel");
 
-        Engine.makeAction_manageView();
+        Engine.makeActionManageView();
     }
 
     /**
@@ -48,7 +48,7 @@ public class ManageOrderView {
         CommonPurposeView.totalAmount();
         CommonPurposeView.backToTop();
 
-        Engine.makeAction_showView();
+        Engine.makeActionShowView();
     }
 
 }

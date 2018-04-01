@@ -21,7 +21,7 @@ public class OrderView {
         System.out.println();
         System.out.println(" 0.Cancel ");
 
-        Engine.makeActionLaunch_Order();
+        Engine.makeActionLaunchOrder();
     }
 
     public static void orderDrinkView() {
@@ -35,7 +35,7 @@ public class OrderView {
         System.out.println();
         System.out.println(" 0.Cancel ");
 
-        Engine.makeActionDrink_Order();
+        Engine.makeActionDrinkOrder();
     }
 
     public static void quantityView() {
@@ -44,7 +44,7 @@ public class OrderView {
         System.out.println();
         System.out.println(" 0.Cancel ");
 
-        Engine.makeQuantity_Add();
+        Engine.makeQuantityAdd();
     }
 
 }

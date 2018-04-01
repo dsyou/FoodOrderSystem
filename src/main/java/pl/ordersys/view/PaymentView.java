@@ -23,13 +23,13 @@ public class PaymentView {
             System.out.println();
             System.out.println(" 0.Back ");
 
-            Engine.makeAction_showTransactionStatus_Error();
+            Engine.makeActionShowTransactionStatusError();
         } else { //view_Successful
             System.out.println("Transaction completed successfully");
             System.out.println();
             System.out.println(" 0.Back ");
 
-            Engine.makeAction_showTransactionStatus_Succes();
+            Engine.makeActionShowTransactionStatusSuccess();
         }
 
     }

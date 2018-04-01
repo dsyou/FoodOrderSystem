@@ -26,7 +26,7 @@ public class Order {
     private List<String> namesOfOrderedItems;
     private List<Double> priceOfOrderedItems;
 
-    private List<Double> tmp; // Temporary Price List
+    private List<Double> tmpPrice; // Temporary Price List
 
     public int quantity = 0;
     private Double totalAmount = 0.d;
@@ -54,12 +54,12 @@ public class Order {
 
     public void totalAmount() {
         Double t = 0.d;
-        for (Double l : tmp) { //priceOfOrderedItems
+        for (Double l : tmpPrice) { //priceOfOrderedItems
             t += l;
         }
         this.totalAmount += t;
         System.out.println(this.totalAmount);
-        tmp = new ArrayList<>(); //Tmp list is clearing here
+        tmpPrice = new ArrayList<>(); //Tmp list is clearing here
     }
 
 }
