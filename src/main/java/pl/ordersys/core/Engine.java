@@ -50,7 +50,7 @@ public class Engine {
 
         System.out.print("Enter amount...");
         try {
-            order.quantity = Integer.parseInt(br.readLine());
+            order.setQuantity(Integer.parseInt(br.readLine()));
         } catch (IOException ex) {
             throw new UserInputNotParsableException();
         }
@@ -227,16 +227,16 @@ public class Engine {
     public static void makeQuantityAdd() {
         Engine.getQuantity(); // Wait for quantity
 
-        if (order.quantity == 0 || (order.quantity >= 100)) {
-            order.quantity = -1; //back...
+        if (order.getQuantity() == 0 || (order.getQuantity() >= 100)) {
+            order.setQuantity(-1); //back...
             GeneralView.view();
         } else {
-            for (int i = 0; i < order.quantity; i++) {
+            for (int i = 0; i < order.getQuantity(); i++) {
                 if (orderMenu.isMenuCheck()) {
                     order.getPriceOfOrderedItems().add(getPrice());
                     order.getTmpPrice().add(getPrice());
                     order.getNamesOfOrderedItems().add(
-                            orderMenu.getArrayOfCuisine()
+                            orderMenu.getCuisines()
                                     .get(orderMenu.t)
                                     .getNameMainCourse() + " " + getNameDessert());
                 } else {
@@ -270,19 +270,19 @@ public class Engine {
     }
 
     private static String getNameDessert() {
-        return orderMenu.getArrayOfCuisine().get(orderMenu.t).getNameDessert();
+        return orderMenu.getCuisines().get(orderMenu.t).getNameDessert();
     }
 
     private static String getDrinkName() {
-        return orderMenu.getArrayOfDrinks().get(orderMenu.t).getName();
+        return orderMenu.getDrinks().get(orderMenu.t).getName();
     }
 
     private static double getDrinkPrice() {
-        return orderMenu.getArrayOfDrinks().get(orderMenu.t).getPrice();
+        return orderMenu.getDrinks().get(orderMenu.t).getPrice();
     }
 
     private static Double getPrice() {
-        return orderMenu.getArrayOfCuisine().get(orderMenu.t).getPrice();
+        return orderMenu.getCuisines().get(orderMenu.t).getPrice();
     }
 
 }

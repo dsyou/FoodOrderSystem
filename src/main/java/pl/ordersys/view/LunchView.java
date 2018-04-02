@@ -1,7 +1,10 @@
 package pl.ordersys.view;
 
+import lombok.experimental.UtilityClass;
 import pl.ordersys.content.OrderMenu;
 import pl.ordersys.core.Engine;
+
+import static pl.ordersys.content.OrderMenu.showCuisinesNames;
 
 /**
  * View class describes the menu of command line interfaces
@@ -12,20 +15,15 @@ import pl.ordersys.core.Engine;
  *
  * @author Dawid Janik
  */
+@UtilityClass
 public class LunchView {
-
-    public LunchView() {
-        super();
-    }
 
     private static OrderMenu orderMenu = OrderMenu.getInstance();
 
     public static void view() {
         CommonPurposeView.viewSystemInfo();
 
-        for (int i = 0; i < orderMenu.getArrayOfCuisine().size(); i++) {
-            System.out.println("" + (i + 1) + "." + orderMenu.getArrayOfCuisine().get(i).getNameCuisines());
-        }
+        showCuisinesNames();
 
         CommonPurposeView.totalAmount();
         CommonPurposeView.backToTop();
@@ -36,9 +34,9 @@ public class LunchView {
     public static void viewCuisinesContent() {
         CommonPurposeView.viewSystemInfo();
 
-        System.out.println("Main course: " + orderMenu.getArrayOfCuisine().get(orderMenu.userKey - 1 ).getNameMainCourse());
-        System.out.println("Dessert: " + orderMenu.getArrayOfCuisine().get(orderMenu.userKey  - 1 ).getNameDessert());
-        System.out.println("Price:" + orderMenu.getArrayOfCuisine().get(orderMenu.userKey - 1).getPrice());
+        System.out.println("Main course: " + orderMenu.getCuisines().get(orderMenu.userKey - 1 ).getNameMainCourse());
+        System.out.println("Dessert: " + orderMenu.getCuisines().get(orderMenu.userKey  - 1 ).getNameDessert());
+        System.out.println("Price:" + orderMenu.getCuisines().get(orderMenu.userKey - 1).getPrice());
         System.out.println();
         System.out.println("5.Order");
 

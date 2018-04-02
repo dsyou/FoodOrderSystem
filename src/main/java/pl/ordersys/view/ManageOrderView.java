@@ -1,8 +1,10 @@
 package pl.ordersys.view;
 
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 import pl.ordersys.core.Engine;
 import pl.ordersys.core.Order;
+
+import static pl.ordersys.core.Order.getOrderedItems;
 
 /**
  * View class describes the menu of command line interfaces
@@ -13,7 +15,7 @@ import pl.ordersys.core.Order;
  *
  * @author Dawid Janik
  */
-@NoArgsConstructor
+@UtilityClass
 public class ManageOrderView {
 
     private static Order order = Order.getInstance();
@@ -37,16 +39,17 @@ public class ManageOrderView {
         //List must have the same size()
         if (order.getNamesOfOrderedItems().size() != order.getPriceOfOrderedItems().size()) {
             System.err.println("Oops order List are not equal");
+            //todo write exception here
             System.exit(-1);
         } else {
-            for (int i = 0; i < order.getNamesOfOrderedItems().size(); i++) {
-                System.out.println((i + 1) + "." + "  Name: " + order.getNamesOfOrderedItems().get(i) + " Price: " + order.getPriceOfOrderedItems().get(i) + "$");
-            }
+            getOrderedItems();
         }
         CommonPurposeView.totalAmount();
         CommonPurposeView.backToTop();
 
         Engine.makeActionShowView();
     }
+
+
 
 }

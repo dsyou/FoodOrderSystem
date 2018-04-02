@@ -28,7 +28,7 @@ public class Order {
 
     private List<Double> tmpPrice; // Temporary Price List
 
-    public int quantity = 0;
+    private int quantity = 0;
     private Double totalAmount = 0.d;
 
     private volatile Boolean lemon;
@@ -53,13 +53,20 @@ public class Order {
     }
 
     public void totalAmount() {
-        Double t = 0.d;
-        for (Double l : tmpPrice) { //priceOfOrderedItems
-            t += l;
+        Double totalAmount = 0.d;
+        for (Double oneItemPrice : tmpPrice) {
+            totalAmount += oneItemPrice;
         }
-        this.totalAmount += t;
+        this.totalAmount += totalAmount;
         System.out.println(this.totalAmount);
         tmpPrice = new ArrayList<>(); //Tmp list is clearing here
+    }
+
+    public static void getOrderedItems() {
+        for (int i = 0; i < getInstance().getNamesOfOrderedItems().size(); i++) {
+            System.out.println((i + 1) + "." + "  Name: " + getInstance().getNamesOfOrderedItems().get(i)
+                    + " Price: " + getInstance().getPriceOfOrderedItems().get(i) + "$");
+        }
     }
 
 }

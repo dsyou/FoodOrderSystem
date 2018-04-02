@@ -32,7 +32,6 @@ public class PaymentView {
 
             Engine.makeActionShowTransactionStatusSuccess();
         }
-
     }
 
 }

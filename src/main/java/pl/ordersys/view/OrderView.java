@@ -1,5 +1,6 @@
 package pl.ordersys.view;
 
+import lombok.experimental.UtilityClass;
 import pl.ordersys.core.Engine;
 
 /**
@@ -11,6 +12,7 @@ import pl.ordersys.core.Engine;
  *
  * @author Dawid Janik
  */
+@UtilityClass
 public class OrderView {
 
     public static void orderLaunchView() {

@@ -1,5 +1,6 @@
 package pl.ordersys.view;
 
+import lombok.experimental.UtilityClass;
 import pl.ordersys.core.Engine;
 
 /**
@@ -11,19 +12,15 @@ import pl.ordersys.core.Engine;
  *
  * @author Dawid Janik
  */
+@UtilityClass
 public class MainView {
 
-    public MainView(){
-        super();
-    }
-
     public static void view(){
-
         CommonPurposeView.viewSystemInfo();
 
         System.out.println(" 1.Lunch");
         System.out.println(" 2.Drink's");
-        CommonPurposeView.totalAmount();     //System.out.println("    Total Amount: ");
+        CommonPurposeView.totalAmount();
 
         System.out.println(" 4.Show/Forgot Order");
         System.out.println(" 5.Back");

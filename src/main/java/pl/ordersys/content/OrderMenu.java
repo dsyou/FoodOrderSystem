@@ -21,8 +21,8 @@ public class OrderMenu {
 
     private static OrderMenu instance = null;
 
-    private LinkedList<Cuisines> arrayOfCuisine = null; // List of Cuisine
-    private LinkedList<Drinks> arrayOfDrinks = null; //  List of Drinks
+    private LinkedList<Cuisines> cuisines = null; // List of Cuisine
+    private LinkedList<Drinks> drinks = null; //  List of Drinks
 
     private boolean menuCheck;
     public volatile int userKey = 0;
@@ -33,6 +33,18 @@ public class OrderMenu {
             instance = new OrderMenu();
         }
         return instance;
+    }
+
+    public static void getDrinksNames() {
+        for (int i = 0; i < getInstance().getDrinks().size(); i++) {
+            System.out.println("" + (i + 1) + "." + getInstance().getDrinks().get(i).getName());
+        }
+    }
+
+    public static void showCuisinesNames() {
+        for (int i = 0; i < getInstance().getCuisines().size(); i++) {
+            System.out.println("" + (i + 1) + "." + getInstance().getCuisines().get(i).getNameCuisines());
+        }
     }
 
 }

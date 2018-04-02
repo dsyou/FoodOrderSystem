@@ -99,7 +99,7 @@ public class DataContent {
                 }
                 cuisines.add(cs); // Add all parameters into list
             }
-            menu.setArrayOfCuisine(cuisines);
+            menu.setCuisines(cuisines);
             showDataCuisines(cuisines);
 
         } catch (IllegalStateException ex) { //Invalid Format
@@ -140,7 +140,7 @@ public class DataContent {
                 }
                 drinks.add(drink); // Add all parameters into list
             }
-            menu.setArrayOfDrinks(drinks);
+            menu.setDrinks(drinks);
             showDataDrinks(drinks);
 
         } catch (IllegalStateException ex) {
