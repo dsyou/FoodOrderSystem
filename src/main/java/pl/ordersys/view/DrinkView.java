@@ -1,8 +1,11 @@
 package pl.ordersys.view;
 
+import lombok.experimental.UtilityClass;
 import pl.ordersys.content.OrderMenu;
 import pl.ordersys.core.Engine;
 
+import static pl.ordersys.content.OrderMenu.getDrinkName;
+import static pl.ordersys.content.OrderMenu.getDrinkPrice;
 import static pl.ordersys.content.OrderMenu.getDrinksNames;
 
 /**
@@ -14,13 +17,8 @@ import static pl.ordersys.content.OrderMenu.getDrinksNames;
  *
  * @author Dawid Janik
  */
+@UtilityClass
 public class DrinkView {
-
-    public DrinkView() {
-        super();
-    }
-
-    private static OrderMenu orderMenu = OrderMenu.getInstance();
 
     public static void view() {
         CommonPurposeView.viewSystemInfo();
@@ -36,9 +34,9 @@ public class DrinkView {
     public static void viewDrinksContent() {
         CommonPurposeView.viewSystemInfo();
 
-        System.out.println("Drink name: " + orderMenu.getDrinks().get(orderMenu.userKey - 1).getName());
+        System.out.println("Drink name: " + getDrinkName());
 
-        System.out.println("Price:" + orderMenu.getDrinks().get(orderMenu.userKey - 1).getPrice() + "$");
+        System.out.println("Price:" + getDrinkPrice());
         System.out.println();
         System.out.println("5.Order");
 

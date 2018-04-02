@@ -4,7 +4,7 @@ import lombok.experimental.UtilityClass;
 import pl.ordersys.content.OrderMenu;
 import pl.ordersys.core.Engine;
 
-import static pl.ordersys.content.OrderMenu.showCuisinesNames;
+import static pl.ordersys.content.OrderMenu.*;
 
 /**
  * View class describes the menu of command line interfaces
@@ -17,8 +17,6 @@ import static pl.ordersys.content.OrderMenu.showCuisinesNames;
  */
 @UtilityClass
 public class LunchView {
-
-    private static OrderMenu orderMenu = OrderMenu.getInstance();
 
     public static void view() {
         CommonPurposeView.viewSystemInfo();
@@ -34,9 +32,9 @@ public class LunchView {
     public static void viewCuisinesContent() {
         CommonPurposeView.viewSystemInfo();
 
-        System.out.println("Main course: " + orderMenu.getCuisines().get(orderMenu.userKey - 1 ).getNameMainCourse());
-        System.out.println("Dessert: " + orderMenu.getCuisines().get(orderMenu.userKey  - 1 ).getNameDessert());
-        System.out.println("Price:" + orderMenu.getCuisines().get(orderMenu.userKey - 1).getPrice());
+        System.out.println("Main course: " + getNameMainCourse());
+        System.out.println("Dessert: " + getNameDessert());
+        System.out.println("Price:" + getPrice());
         System.out.println();
         System.out.println("5.Order");
 

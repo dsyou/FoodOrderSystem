@@ -24,12 +24,17 @@ public class CommonPurposeView {
     }
 
     public static void totalAmount() {
-        System.out.println("    Total Amount: " + order.getTotalAmount() + "$");
+        System.out.println("    Total Amount: " + getTotalAmount() + "$");
     }
+
 
     public static void backToTop() {
         System.out.println();
         System.out.println("0. Back to Top");
+    }
+
+    private static Double getTotalAmount() {
+        return order.getTotalAmount();
     }
 
 }

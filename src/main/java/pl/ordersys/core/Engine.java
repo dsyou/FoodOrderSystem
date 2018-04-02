@@ -235,10 +235,12 @@ public class Engine {
                 if (orderMenu.isMenuCheck()) {
                     order.getPriceOfOrderedItems().add(getPrice());
                     order.getTmpPrice().add(getPrice());
-                    order.getNamesOfOrderedItems().add(
-                            orderMenu.getCuisines()
-                                    .get(orderMenu.t)
-                                    .getNameMainCourse() + " " + getNameDessert());
+                    order.getNamesOfOrderedItems()
+                            .add(
+                                    orderMenu.getCuisines()
+                                            .get(orderMenu.t)
+                                            .getNameMainCourse() + " " + getNameDessert()
+                            );
                 } else {
                     if (!order.getLemon() && !order.getIce()) {
                         // without lemon and ice
