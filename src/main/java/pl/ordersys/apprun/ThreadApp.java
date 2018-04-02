@@ -36,9 +36,9 @@ public class ThreadApp extends Thread {
                 orderMenu.userKey = 0;
             }
             // Allowed to take order amount form 1 to 998 items per one transaction
-            if (order.quantity < 0 || order.quantity >= 1000) {
+            if (order.getQuantity() < 0 || order.getQuantity() >= 1000) {
                 log.debug("Invalid range expression of type");
-                order.quantity = 0;
+                order.setQuantity(0);
             }
         }
     }
