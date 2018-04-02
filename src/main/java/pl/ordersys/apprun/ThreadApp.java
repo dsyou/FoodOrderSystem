@@ -22,8 +22,6 @@ public class ThreadApp extends Thread {
      * In this method Thread is always running.
      * After taken incorrect value from user choices.
      * Specific action appears.
-     *
-     * @return void
      */
     @Override
     public void run() {
