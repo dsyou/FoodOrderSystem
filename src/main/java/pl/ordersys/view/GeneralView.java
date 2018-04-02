@@ -14,7 +14,7 @@ import pl.ordersys.core.Engine;
 public class GeneralView {
 
     public static void view(){
-        CommonPurposeView.view_SystemInfo();
+        CommonPurposeView.viewSystemInfo();
 
         System.out.println(" 1. Make Order" );
         System.out.println(" 2. Payment");

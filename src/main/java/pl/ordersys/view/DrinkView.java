@@ -23,7 +23,7 @@ public class DrinkView {
 
     public static void view(){
 
-        CommonPurposeView.view_SystemInfo();
+        CommonPurposeView.viewSystemInfo();
 
         for (int i = 0; i < o.getArrayOfDrinks().size(); i++) {
             System.out.println("" + (i + 1) + "." + o.getArrayOfDrinks().get(i).getName() ); //+ " $" + o.getArrayOfDrinks().get(i).getPrice()
@@ -36,9 +36,9 @@ public class DrinkView {
     }
 
     //ice cubes or/and lemon
-    public static void view_DrinksContent() {
+    public static void viewDrinksContent() {
 
-        CommonPurposeView.view_SystemInfo();
+        CommonPurposeView.viewSystemInfo();
 
         System.out.println("Drink name: " + o.getArrayOfDrinks().get(o.userKey - 1 ).getName());
 

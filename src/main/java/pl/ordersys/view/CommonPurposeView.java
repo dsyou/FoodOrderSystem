@@ -15,7 +15,7 @@ public class CommonPurposeView {
 
     private static Order order = Order.getInstance();
 
-    public static void view_SystemInfo() {
+    public static void viewSystemInfo() {
         System.out.println(" ============================== ");
         System.out.println(" = Food Ordering System v 0.8 = ");
         System.out.println(" ============================== ");

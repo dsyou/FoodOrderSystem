@@ -19,7 +19,7 @@ public class MainView {
 
     public static void view(){
 
-        CommonPurposeView.view_SystemInfo();
+        CommonPurposeView.viewSystemInfo();
 
         System.out.println(" 1.Lunch");
         System.out.println(" 2.Drink's");

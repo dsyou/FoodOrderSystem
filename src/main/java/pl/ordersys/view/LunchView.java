@@ -22,7 +22,7 @@ public class LunchView {
 
     public static void view() {
 
-        CommonPurposeView.view_SystemInfo();
+        CommonPurposeView.viewSystemInfo();
 
         for (int i = 0; i < orderMenu.getArrayOfCuisine().size(); i++) {
             System.out.println("" + (i + 1) + "." + orderMenu.getArrayOfCuisine().get(i).getNameCuisines());
@@ -34,9 +34,9 @@ public class LunchView {
         Engine.makeActionLaunchView();
     }
 
-    public static void view_CuisinesContent() {
+    public static void viewCuisinesContent() {
 
-        CommonPurposeView.view_SystemInfo();
+        CommonPurposeView.viewSystemInfo();
 
         System.out.println("Main course: " + orderMenu.getArrayOfCuisine().get(orderMenu.userKey - 1 ).getNameMainCourse());
         System.out.println("Dessert: " + orderMenu.getArrayOfCuisine().get(orderMenu.userKey  - 1 ).getNameDessert());

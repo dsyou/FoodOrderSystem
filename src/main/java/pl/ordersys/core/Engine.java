@@ -115,7 +115,7 @@ public class Engine {
         Engine.getUserAction(); // Wait for key
 
         if (orderMenu.userKey == 1) { //Show order option
-            ManageOrderView.view_show();
+            ManageOrderView.viewShow();
         } else if (orderMenu.userKey == 5) { // Forgot all in order
             order.dropOrder();
             MainView.view();
@@ -159,7 +159,7 @@ public class Engine {
             //orderMenu.getArrayOfCuisine().get(orderMenu.userKey -1);//
             orderMenu.t = orderMenu.userKey - 1;
             System.out.println("User key t " + (orderMenu.t));
-            LunchView.view_CuisinesContent();
+            LunchView.viewCuisinesContent();
 
         }
     }
@@ -173,7 +173,7 @@ public class Engine {
         } else {
             orderMenu.t = orderMenu.userKey - 1;
             System.out.println("User key t- Drinks  " + (orderMenu.t));
-            DrinkView.view_DrinksContent();
+            DrinkView.viewDrinksContent();
         }
     }
     public static void makeOrderView() {

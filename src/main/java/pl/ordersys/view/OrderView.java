@@ -14,7 +14,7 @@ import pl.ordersys.core.Engine;
 public class OrderView {
 
     public static void orderLaunchView() {
-        CommonPurposeView.view_SystemInfo();
+        CommonPurposeView.viewSystemInfo();
 
         System.out.println(" 1.Quantity ");
         //System.out.println(" 2.Accept ");
@@ -25,7 +25,7 @@ public class OrderView {
     }
 
     public static void orderDrinkView() {
-        CommonPurposeView.view_SystemInfo();
+        CommonPurposeView.viewSystemInfo();
 
         System.out.println(" 1.Quantity ");
         System.out.println(" 2. Extra Lemon "); // +L
@@ -39,7 +39,7 @@ public class OrderView {
     }
 
     public static void quantityView() {
-        CommonPurposeView.view_SystemInfo();
+        CommonPurposeView.viewSystemInfo();
         System.out.print(" Quantity: "); // Here take quantity
         System.out.println();
         System.out.println(" 0.Cancel ");
