@@ -1,19 +1,20 @@
 package pl.ordersys.core;
 
 
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
-import pl.ordersys.content.Cuisines;
-import pl.ordersys.content.Drinks;
-import pl.ordersys.content.OrderMenu;
-import pl.ordersys.apprun.exception.AppExp;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import pl.ordersys.apprun.exception.AppExp;
+import pl.ordersys.content.Cuisines;
+import pl.ordersys.content.Drinks;
+import pl.ordersys.content.OrderMenu;
 import pl.ordersys.core.exception.ExcelFileNotFoundException;
 import pl.ordersys.core.exception.ExcelIoException;
+import pl.ordersys.core.exception.ExcelSheetOutOfRangeException;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,12 +32,12 @@ import java.util.LinkedList;
  * @author Dawid Janik
  */
 @Slf4j
-@NoArgsConstructor
+@UtilityClass
 public class DataContent {
 
     // XML SpreadSheet Format
     private static XSSFRow row;
-    private static OrderMenu menu = OrderMenu.getInstace();
+    private static OrderMenu menu = OrderMenu.getInstance();
 
     private static LinkedList<Cuisines> cuisines = new LinkedList<>();
     private static LinkedList<Drinks> drinks = new LinkedList<>();
@@ -49,11 +50,9 @@ public class DataContent {
      */
     public static void getContent(String path) {
 
-        final FileInputStream excelData; //data.xlsx
         final XSSFWorkbook workbook;
 
-        try {
-            excelData = new FileInputStream(new File(path)); //Place for address
+        try (final FileInputStream excelData = new FileInputStream(new File(path))) {
             workbook = new XSSFWorkbook(excelData); //DataContent
             setLunchData(workbook);
             setDrinksData(workbook);
@@ -76,24 +75,24 @@ public class DataContent {
      */
     private static void setLunchData(XSSFWorkbook workbook) {
         try {
-            XSSFSheet spreadsheet = workbook.getSheetAt(0); //Sheet(0)-Launch
-            Iterator<Row> rowIterator = spreadsheet.iterator();
+            //Sheet(0)-Launch
+            XSSFSheet spreadsheet = workbook.getSheetAt(0);
 
-            while (rowIterator.hasNext()) {
-
-                row = (XSSFRow) rowIterator.next();
+            for (Row aSpreadsheet : spreadsheet) {
+                row = (XSSFRow) aSpreadsheet;
                 Iterator<Cell> cellIterator = row.cellIterator();
 
                 Cuisines cs = new Cuisines();
                 while (cellIterator.hasNext()) {
-                    Cell cell = cellIterator.next(); // Cell from Excel
+                    // Cell from Excel
+                    Cell cell = cellIterator.next();
 
                     if (cell.getColumnIndex() == 0) {
-                        cs.setNameCuisines(cell.getStringCellValue()); // Name e.g. Polish
+                        cs.setNameCuisines(getStringCellValue(cell)); // Name e.g. Polish
                     } else if (cell.getColumnIndex() == 1) {
-                        cs.setNameMainCourse(cell.getStringCellValue()); // Main course e.g. Schabowy
+                        cs.setNameMainCourse(getStringCellValue(cell)); // Main course e.g. Schabowy
                     } else if (cell.getColumnIndex() == 2) {
-                        cs.setNameDessert(cell.getStringCellValue()); // Dessert e.g. Makowiec
+                        cs.setNameDessert(getStringCellValue(cell)); // Dessert e.g. Makowiec
                     } else if (cell.getColumnIndex() == 3) {
                         cs.setPrice(cell.getNumericCellValue()); // Price e.g. 24.99$
                     }
@@ -103,10 +102,14 @@ public class DataContent {
             menu.setArrayOfCuisine(cuisines);
             showDataCuisines(cuisines);
 
-        } catch (java.lang.IllegalStateException e) { //Invalid Format
-            log.debug("Invalid Data in Excel Launch Cell");
-            //todo throw exception here
+        } catch (IllegalStateException ex) { //Invalid Format
+            log.debug("Out of range when accessing Excel sheet");
+            throw new ExcelSheetOutOfRangeException();
         }
+    }
+
+    private static String getStringCellValue(Cell cell) {
+        return cell.getStringCellValue();
     }
 
     /**
@@ -118,22 +121,19 @@ public class DataContent {
      */
     private static void setDrinksData(XSSFWorkbook workbook) {
         try {
+            //Sheet(1)-Drinks
+            XSSFSheet spreadsheet = workbook.getSheetAt(1);
 
-            XSSFSheet spreadsheet = workbook.getSheetAt(1);             //Sheet(1)-Drinks
-            Iterator<Row> rowIterator = spreadsheet.iterator();
-
-            while (rowIterator.hasNext()) {
-
-                row = (XSSFRow) rowIterator.next();
+            for (Row aSpreadsheet : spreadsheet) {
+                row = (XSSFRow) aSpreadsheet;
                 Iterator<Cell> cellIterator = row.cellIterator();
 
                 Drinks drink = new Drinks();
                 while (cellIterator.hasNext()) {
 
-                    Cell cell = cellIterator.next(); // each Cell from Excel
-
+                    Cell cell = cellIterator.next();
                     if (cell.getColumnIndex() == 0) {
-                        drink.setName(cell.getStringCellValue()); // Name e.g. Vodka
+                        drink.setName(getStringCellValue(cell)); // Name e.g. Vodka
                     } else if (cell.getColumnIndex() == 1) {
                         drink.setPrice(cell.getNumericCellValue()); // Price e.g. 4.99$
                     }
@@ -143,9 +143,9 @@ public class DataContent {
             menu.setArrayOfDrinks(drinks);
             showDataDrinks(drinks);
 
-        } catch (java.lang.IllegalStateException e) { //Invalid Format
-            log.debug("Invalid Data in Excel Drinks Cell");
-            //todo throw ex
+        } catch (IllegalStateException ex) {
+            log.debug("Out of range when accessing Excel sheet");
+            throw new ExcelSheetOutOfRangeException();
         }
     }
 

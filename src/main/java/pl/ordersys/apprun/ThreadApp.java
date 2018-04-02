@@ -15,7 +15,7 @@ import pl.ordersys.core.Order;
 @NoArgsConstructor
 public class ThreadApp extends Thread {
 
-    private OrderMenu orderMenu = OrderMenu.getInstace();
+    private OrderMenu orderMenu = OrderMenu.getInstance();
     private static Order order = Order.getInstance();
 
     /**

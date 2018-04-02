@@ -16,7 +16,7 @@ import pl.ordersys.view.GeneralView;
 @Slf4j
 public class Main {
 
-    private static String path = "./resources/Food.xls";
+    private static String path = ".//src//main//resources//food.xlsx";
 
     /**
      * This is the main method that launches thread of Application,

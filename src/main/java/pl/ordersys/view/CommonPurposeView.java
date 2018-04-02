@@ -1,5 +1,6 @@
 package pl.ordersys.view;
 
+import lombok.experimental.UtilityClass;
 import pl.ordersys.core.Order;
 
 /**
@@ -11,6 +12,7 @@ import pl.ordersys.core.Order;
  *
  * @author Dawid Janik
  */
+@UtilityClass
 public class CommonPurposeView {
 
     private static Order order = Order.getInstance();

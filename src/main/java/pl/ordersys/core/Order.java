@@ -39,8 +39,8 @@ public class Order {
      * List of orderedItems and price should be overwritten
      */
     public void dropOrder() {
-        this.namesOfOrderedItems = new ArrayList<>(); //.forEach(s ->s = "");
-        this.priceOfOrderedItems = new ArrayList<>();//.forEach(i ->i =0.d);
+        this.namesOfOrderedItems = new ArrayList<>();
+        this.priceOfOrderedItems = new ArrayList<>();
         this.quantity = 0;
         this.totalAmount = 0.d;
     }

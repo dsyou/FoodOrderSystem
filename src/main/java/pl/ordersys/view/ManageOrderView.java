@@ -19,7 +19,6 @@ public class ManageOrderView {
     private static Order order = Order.getInstance();
 
     public static void view() {
-
         CommonPurposeView.viewSystemInfo();
         System.out.println(" 1.Show Order");
         System.out.println(" 5.Forgot Order");
@@ -33,7 +32,6 @@ public class ManageOrderView {
      * Purpose of this method is to show all items ordered by current transaction.
      */
     public static void viewShow() {
-
         CommonPurposeView.viewSystemInfo();
 
         //List must have the same size()

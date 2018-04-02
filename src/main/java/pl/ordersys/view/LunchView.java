@@ -16,12 +16,11 @@ public class LunchView {
 
     public LunchView() {
         super();
-    } //
+    }
 
-    private static OrderMenu orderMenu = OrderMenu.getInstace();
+    private static OrderMenu orderMenu = OrderMenu.getInstance();
 
     public static void view() {
-
         CommonPurposeView.viewSystemInfo();
 
         for (int i = 0; i < orderMenu.getArrayOfCuisine().size(); i++) {
@@ -35,7 +34,6 @@ public class LunchView {
     }
 
     public static void viewCuisinesContent() {
-
         CommonPurposeView.viewSystemInfo();
 
         System.out.println("Main course: " + orderMenu.getArrayOfCuisine().get(orderMenu.userKey - 1 ).getNameMainCourse());

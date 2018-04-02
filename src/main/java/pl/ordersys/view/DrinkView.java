@@ -12,23 +12,22 @@ import pl.ordersys.core.Engine;
  *
  * @author Dawid Janik
  */
-
 public class DrinkView {
 
     public DrinkView() {
         super();
     }
 
-    private static OrderMenu o = OrderMenu.getInstace();
+    private static OrderMenu o = OrderMenu.getInstance();
 
     public static void view(){
 
         CommonPurposeView.viewSystemInfo();
 
         for (int i = 0; i < o.getArrayOfDrinks().size(); i++) {
-            System.out.println("" + (i + 1) + "." + o.getArrayOfDrinks().get(i).getName() ); //+ " $" + o.getArrayOfDrinks().get(i).getPrice()
+            System.out.println("" + (i + 1) + "." + o.getArrayOfDrinks().get(i).getName() );
+            //+ " $" + o.getArrayOfDrinks().get(i).getPrice()
         }
-
         CommonPurposeView.totalAmount();
         CommonPurposeView.backToTop();
 
@@ -37,7 +36,6 @@ public class DrinkView {
 
     //ice cubes or/and lemon
     public static void viewDrinksContent() {
-
         CommonPurposeView.viewSystemInfo();
 
         System.out.println("Drink name: " + o.getArrayOfDrinks().get(o.userKey - 1 ).getName());

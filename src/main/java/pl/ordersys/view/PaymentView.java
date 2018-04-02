@@ -1,5 +1,6 @@
 package pl.ordersys.view;
 
+import lombok.experimental.UtilityClass;
 import pl.ordersys.core.Engine;
 import pl.ordersys.core.Order;
 
@@ -12,12 +13,12 @@ import pl.ordersys.core.Order;
  *
  * @author Dawid Janik
  */
+@UtilityClass
 public class PaymentView {
 
     private static Order order = Order.getInstance();
 
     public static void view() {
-
         if (order.getTotalAmount() == 0.d) { //view_error
             System.out.println("No purchase order found");
             System.out.println();
