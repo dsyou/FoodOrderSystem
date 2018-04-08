@@ -1,6 +1,7 @@
 package pl.ordersys.view;
 
-import lombok.experimental.UtilityClass;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 import pl.ordersys.core.Engine;
 import pl.ordersys.core.Order;
 
@@ -13,25 +14,27 @@ import pl.ordersys.core.Order;
  *
  * @author Dawid Janik
  */
-@UtilityClass
-public class PaymentView {
+@Component
+@NoArgsConstructor
+public class PaymentView extends CliView {
 
     private static Order order = Order.getInstance();
 
-    public static void view() {
-        if (order.getTotalAmount() == 0.d) { //view_error
-            System.out.println("No purchase order found");
-            System.out.println();
-            System.out.println(" 0.Back ");
-
-            Engine.makeActionShowTransactionStatusError();
-        } else { //view_Successful
-            System.out.println("Transaction completed successfully");
-            System.out.println();
-            System.out.println(" 0.Back ");
-
-            Engine.makeActionShowTransactionStatusSuccess();
+    public void view() {
+        if (order.getTotalAmount() == 0.d) {
+            generateView("No purchase order found");
+            getEngine().makeActionShowTransactionStatusError();
+//            getEngine().makeActionShowTransactionStatusError();
+        } else {
+            generateView("Transaction completed successfully");
+            getEngine().makeActionShowTransactionStatusSuccess();
         }
+    }
+
+    private static void generateView(String message) {
+        System.out.println(message);
+        System.out.println();
+        System.out.println(" 0.Back ");
     }
 
 }

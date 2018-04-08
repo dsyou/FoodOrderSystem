@@ -1,7 +1,8 @@
 package pl.ordersys.view;
 
-import lombok.experimental.UtilityClass;
-import pl.ordersys.core.Engine;
+
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 /**
  * View class describes the menu of command line interfaces
@@ -12,23 +13,23 @@ import pl.ordersys.core.Engine;
  *
  * @author Dawid Janik
  */
-@UtilityClass
-public class OrderView {
+@Component
+@NoArgsConstructor
+public class OrderView extends CliView {
 
-    public static void orderLaunchView() {
-        CommonPurposeView.viewSystemInfo();
+    public void orderLaunchView() {
+        UtilityView.viewSystemInfo();
 
         System.out.println(" 1.Quantity ");
         //System.out.println(" 2.Accept ");
         System.out.println();
         System.out.println(" 0.Cancel ");
 
-        Engine.makeActionLaunchOrder();
+        getEngine().makeActionLaunchOrder();
     }
 
-    public static void orderDrinkView() {
-        CommonPurposeView.viewSystemInfo();
-
+    public void orderDrinkView() {
+        UtilityView.viewSystemInfo();
         System.out.println(" 1.Quantity ");
         System.out.println(" 2. Extra Lemon "); // +L
         System.out.println(" 3. Extra Ice cubes "); // +Ice
@@ -37,16 +38,20 @@ public class OrderView {
         System.out.println();
         System.out.println(" 0.Cancel ");
 
-        Engine.makeActionDrinkOrder();
+        getEngine().makeActionDrinkOrder();
     }
 
-    public static void quantityView() {
-        CommonPurposeView.viewSystemInfo();
+    public void quantityView() {
+        UtilityView.viewSystemInfo();
         System.out.print(" Quantity: "); // Here take quantity
         System.out.println();
         System.out.println(" 0.Cancel ");
 
-        Engine.makeQuantityAdd();
+        getEngine().makeQuantityAdd();
     }
 
+    @Override
+    public void view() {
+
+    }
 }

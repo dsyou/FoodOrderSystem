@@ -1,7 +1,7 @@
 package pl.ordersys.view;
 
-import lombok.experimental.UtilityClass;
-import pl.ordersys.core.Engine;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 import pl.ordersys.core.Order;
 
 import static pl.ordersys.core.Order.getOrderedItems;
@@ -15,26 +15,28 @@ import static pl.ordersys.core.Order.getOrderedItems;
  *
  * @author Dawid Janik
  */
-@UtilityClass
-public class ManageOrderView {
+@Component
+@NoArgsConstructor
+public class ManageOrderView extends CliView {
 
     private static Order order = Order.getInstance();
 
-    public static void view() {
-        CommonPurposeView.viewSystemInfo();
+    public void view() {
+        UtilityView.viewSystemInfo();
         System.out.println(" 1.Show Order");
         System.out.println(" 5.Forgot Order");
         System.out.println();
         System.out.println(" 0.Cancel");
 
-        Engine.makeActionManageView();
+        getEngine().makeActionManageView();
+//        getEngine().makeActionManageView();
     }
 
     /**
      * Purpose of this method is to show all items ordered by current transaction.
      */
-    public static void viewShow() {
-        CommonPurposeView.viewSystemInfo();
+    public void viewShow() {
+        UtilityView.viewSystemInfo();
 
         //List must have the same size()
         if (order.getNamesOfOrderedItems().size() != order.getPriceOfOrderedItems().size()) {
@@ -44,12 +46,11 @@ public class ManageOrderView {
         } else {
             getOrderedItems();
         }
-        CommonPurposeView.totalAmount();
-        CommonPurposeView.backToTop();
+        UtilityView.totalAmount();
+        UtilityView.backToTop();
 
-        Engine.makeActionShowView();
+        getEngine().makeActionShowView();
     }
-
 
 
 }

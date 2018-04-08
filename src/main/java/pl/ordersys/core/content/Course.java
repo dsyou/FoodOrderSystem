@@ -1,17 +1,18 @@
-package pl.ordersys.content;
+package pl.ordersys.core.content;
 
 import lombok.*;
 
 /**
- * This class contains representations of the each object "Drinks"
- *
  * @author Dawid Janik
+ * @since 07.04.2018
  */
-@Getter
 @Setter
+@Getter
 @ToString
+@EqualsAndHashCode
 @NoArgsConstructor
-public class Drinks {
+public class Course {
     private String name;
     private double price;
+    private Dessert dessert;
 }

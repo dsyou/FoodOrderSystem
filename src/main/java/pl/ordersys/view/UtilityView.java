@@ -13,7 +13,7 @@ import pl.ordersys.core.Order;
  * @author Dawid Janik
  */
 @UtilityClass
-public class CommonPurposeView {
+public class UtilityView {
 
     private static Order order = Order.getInstance();
 

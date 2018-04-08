@@ -1,4 +1,4 @@
-package pl.ordersys.content;
+package pl.ordersys.core.content;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,12 +21,12 @@ public class OrderMenu {
 
     private static OrderMenu instance = null;
 
-    private LinkedList<Cuisines> cuisines = null; // List of Cuisine
-    private LinkedList<Drinks> drinks = null; //  List of Drinks
+    private LinkedList<Cuisine> cuisines = null; // List of Cuisine
+    private LinkedList<Drink> drinks = null; //  List of Drink
 
     private boolean menuCheck;
-    public volatile int userKey = 0;
-    public int t = 0; //todo what is that ?
+    private volatile int userNavigationKey = 0;
+    private int t = 0; //todo what is that ?
 
     public static OrderMenu getInstance() {
         if (instance == null) {
@@ -43,28 +43,29 @@ public class OrderMenu {
 
     public static void showCuisinesNames() {
         for (int i = 0; i < getInstance().getCuisines().size(); i++) {
-            System.out.println("" + (i + 1) + "." + getInstance().getCuisines().get(i).getNameCuisines());
+            System.out.println("" + (i + 1) + "." + getInstance().getCuisines().get(i).getName());
         }
     }
 
     public static String getDrinkPrice() {
-        return getInstance().getDrinks().get(getInstance().userKey - 1).getPrice() + "$";
+        return getInstance().getDrinks().get(getInstance().userNavigationKey - 1).getPrice() + "$";
     }
 
     public static String getDrinkName() {
-        return getInstance().getDrinks().get(getInstance().userKey - 1).getName();
+        return getInstance().getDrinks().get(getInstance().userNavigationKey - 1).getName();
     }
 
     public static Double getPrice() {
-        return getInstance().getCuisines().get(getInstance().userKey - 1).getPrice();
+        return getInstance().getCuisines().get(getInstance().userNavigationKey - 1).getDessert().getPrice();
+        // todo change  + mock
     }
 
     public static String getNameDessert() {
-        return getInstance().getCuisines().get(getInstance().userKey  - 1 ).getNameDessert();
+        return getInstance().getCuisines().get(getInstance().userNavigationKey - 1).getDessert().getName();
     }
 
     public static String getNameMainCourse() {
-        return getInstance().getCuisines().get(getInstance().userKey - 1 ).getNameMainCourse();
+        return getInstance().getCuisines().get(getInstance().userNavigationKey - 1).getCourse().getName();
     }
 
 }

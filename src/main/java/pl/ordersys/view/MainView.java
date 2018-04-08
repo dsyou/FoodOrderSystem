@@ -1,31 +1,38 @@
 package pl.ordersys.view;
 
-import lombok.experimental.UtilityClass;
-import pl.ordersys.core.Engine;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * View class describes the menu of command line interfaces
  * Each position contains numeric values responsible to
  * specific action assigned to this value (e.g 5. Back to previous view)
- *
+ * <p>
  * This class responds to sout Main view order content.
  *
  * @author Dawid Janik
  */
-@UtilityClass
-public class MainView {
+@Component
+//@NoArgsConstructor(onConstructor = @__(@Autowired))
+public class MainView extends CliView {
 
-    public static void view(){
-        CommonPurposeView.viewSystemInfo();
+    public void view() {
+        UtilityView.viewSystemInfo();
 
         System.out.println(" 1.Lunch");
         System.out.println(" 2.Drink's");
-        CommonPurposeView.totalAmount();
+        UtilityView.totalAmount();
 
         System.out.println(" 4.Show/Forgot Order");
         System.out.println(" 5.Back");
 
-        Engine.makeActionMainView();
+//        getEngine().makeActionOnMainView();
+        getEngine().makeActionOnMainView();
     }
 
+    @Autowired
+    public MainView() {
+    }
 }

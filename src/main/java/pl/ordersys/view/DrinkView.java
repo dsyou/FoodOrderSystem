@@ -1,12 +1,10 @@
 package pl.ordersys.view;
 
-import lombok.experimental.UtilityClass;
-import pl.ordersys.content.OrderMenu;
 import pl.ordersys.core.Engine;
 
-import static pl.ordersys.content.OrderMenu.getDrinkName;
-import static pl.ordersys.content.OrderMenu.getDrinkPrice;
-import static pl.ordersys.content.OrderMenu.getDrinksNames;
+import static pl.ordersys.core.content.OrderMenu.getDrinkName;
+import static pl.ordersys.core.content.OrderMenu.getDrinkPrice;
+import static pl.ordersys.core.content.OrderMenu.getDrinksNames;
 
 /**
  * View class describes the menu of command line interfaces
@@ -17,22 +15,22 @@ import static pl.ordersys.content.OrderMenu.getDrinksNames;
  *
  * @author Dawid Janik
  */
-@UtilityClass
-public class DrinkView {
+public class DrinkView extends CliView {
 
-    public static void view() {
-        CommonPurposeView.viewSystemInfo();
+    @Override
+    public void view() {
+        UtilityView.viewSystemInfo();
 
         getDrinksNames();
-        CommonPurposeView.totalAmount();
-        CommonPurposeView.backToTop();
+        UtilityView.totalAmount();
+        UtilityView.backToTop();
 
-        Engine.makeActionDrinkView();
+        getEngine().makeActionDrinkView();
     }
 
     //ice cubes or/and lemon
-    public static void viewDrinksContent() {
-        CommonPurposeView.viewSystemInfo();
+    public void viewDrinksContent() {
+        UtilityView.viewSystemInfo();
 
         System.out.println("Drink name: " + getDrinkName());
 
@@ -40,8 +38,11 @@ public class DrinkView {
         System.out.println();
         System.out.println("5.Order");
 
-        CommonPurposeView.backToTop();
-        Engine.makeOrderView();
+        UtilityView.backToTop();
+        getEngine().makeOrderView();
     }
 
+
 }
+
+
